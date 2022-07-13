@@ -1,0 +1,4 @@
+Django>= 4.0, < 4.0.6
+django-bootstrap4
+psycopg2
+Pillow
