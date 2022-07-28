@@ -1,0 +1,5 @@
+fec_app_base/Key.py
+fec_app_base/__pycache__/
+fec_app_folder/__pycache__/
+migrations/
+postgres
