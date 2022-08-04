@@ -4,6 +4,10 @@ bootstrap -v 4
 
 始め方
 docker compose up -d
+
+変更時
+docekr compose restart
+
 止め方と再開
 docker compose stop
 docker comopse start
