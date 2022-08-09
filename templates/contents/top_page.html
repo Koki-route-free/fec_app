@@ -4,27 +4,32 @@
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-3 mb-4 border-bottom">
      <h3 class="h3">○/○ ○限 教室使用状況</h3>
+{% comment %} 現在のものを反映↑ {% endcomment %}
 </div>
+{% comment %} ↓階ごとの使用状況表{% endcomment %}
 <table class="table table-bordered table-striped">
      <tbody>
           <tr>
-               <td>6階</td><td class="status6">○</td>
+               <td>6階</td><td class="status6"><a href="#" class="text-decoration-none">○</a></td>
           </tr>
           <tr>
-               <td>5階</td><td class="status5">○</td>
+               <td>5階</td><td class="status5"><a href="#" class="text-decoration-none">○</a></td>
           </tr>
           <tr>
-               <td>4階</td><td class="status4">○</td>
+               <td>4階</td><td class="status4"><a href="#" class="text-decoration-none">○</a></td>
           </tr>
           <tr>
-               <td>3階</td><td class="status3">○</td>
+               <td>3階</td><td class="status3"><a href="#" class="text-decoration-none">○</a></td>
           </tr>
           <tr>
-               <td>2階</td><td class="status2">○</td>
+               <td>2階</td><td class="status2"><a href="#" class="text-decoration-none">○</a></td>
           </tr>
+          {% comment %} クリックするボタンは仮。クリック先がタブメニューでありhtmlファイル別に分けられないため
+          どのようにその階層のものを直接表示するか。場合によってはタブメニュー自体却下も可 {% endcomment %}
      </tbody>
 </table>
 <br>
+{% comment %} ↓先の空き教室確認への誘導 {% endcomment %}
 <div>
      <a href="class_schedule.html" class="text-decoration-none">今日の空き教室予定はこちら</a>
 </div>

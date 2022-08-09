@@ -5,13 +5,16 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-3 border-bottom">
     <h2 class="h2">今日の空き教室予定</h2>
 </div>
+{% comment %} ↓予定確認の注意書き↓ {% endcomment %}
 <div class="mt-3">
     <p class="h4">注意</p>
     <p>・表示可能なのは当日分のみです</p>
     <p>・使用予定は変更になる場合があるため、可能な限り最新のものを確認するようにお願いいたします。</p>
 </div>
 <br>
+
 <div class="input-group">
+  {% comment %} ↓時限を選択するプルダウンメニュー↓ {% endcomment %}
     <select class="custom-select" id="inputGroupSelect">
       <option selected>Choose...</option>
       <option value="1">１限</option>
@@ -21,6 +24,7 @@
       <option value="5">５限</option>
       <option value="6">６限</option>
     </select>
+  {% comment %} ↓表示するボタン↓ {% endcomment %}
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button">表示</button>
     </div>
