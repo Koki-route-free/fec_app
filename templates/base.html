@@ -48,15 +48,16 @@
     {% comment %} 以降パソコン用 {% endcomment %}
     <div class="container-fluid sticky-top version_pc">
       {% comment %} 背景色変更↓ {% endcomment %}
-      <div class="row bg-info">
+      <div class="row bg-success">
         <div class="col-12">
           {% comment %} 二つの要素を両端に配置↓ {% endcomment %}
           <div class="d-flex justify-content-between">
             {% comment %} ロゴ↓ {% endcomment %}
             <div class="logo"><img src="images/Vcode_Logo.png"></div>
-            {% comment %} メニュー↓ {% endcomment %}
+            {% comment %} 管理者用画面に飛ぶ↓ {% endcomment %}
             <div class="pt-1 mr-3 mt-4 mb-4">
-              <div class="menu"><span class="material-icons" id="open">menu</span></div>
+              <button type="button" class="btn btn-danger">管理者用画面はこちら</button>
+              {% comment %} ↑リンクの入れ方がわからないです {% endcomment %}
             </div>
           </div>
         </div>
