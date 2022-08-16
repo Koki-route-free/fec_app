@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'bootstrap4',
 ]
 
+AUTH_USER_MODEL = 'fec_app_folder.UserDB'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -82,13 +84,15 @@ WSGI_APPLICATION = 'fec_app_base.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': Key.DATABASES_NAME,
         'USER': Key.DATABASES_USER,
         'PASSWORD': Key.DATABASES_PASSWORD,
+        'HOST': Key.DATABASES_HOST,
         'PORT': 5432,
     }
 }
+
 
 
 # Password validation
