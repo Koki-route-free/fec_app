@@ -1,19 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
+from django.contrib.auth.views import LogoutView, LoginView
+from .forms import LoginForm
+from django.db.models import Q
+from .models import UserDB, SolidDB, TemporaryDB, AssetDB
+
 
 class Admins_Solid_View(View):  
     def get(self, request, *args, **kwargs):  
-        return render(request, 'admins/solid.html')
+        return render(request, 'admins/login/solid.html')
 
 
 class Admins_Temporary_View(View):  
     def get(self, request, *args, **kwargs):  
-        return render(request, 'admins/temporary.html')
+        return render(request, 'admins/login/temporary.html')
 
 
-class Admins_Login_View(View):  
-    def get(self, request, *args, **kwargs):  
-        return render(request, 'admins/login.html')
+class Admins_Login_View(LoginView):  
+    form_class = LoginForm
+    template_name = 'admins/login.html'
 
 
 class Users_Reviews_View(View):  

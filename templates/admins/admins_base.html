@@ -12,23 +12,23 @@
   <link rel="stylesheet" type='text/css' href="{% static 'css/admins.css'%}">
 </head>
 <body>
+  {% if user.username %}
+  {% block contents %}
+  {% endblock %}
+  {% else %}
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-5 border-bottom">
-    <h1 class="h2">ログイン</h1>
+    <h2 class="h2">ログインされていません</h2>
   </div>
-  {% if form.errors  %}
-  <p>ユーザーID, パスワードが一致しません．</p>
+  <br>
+  <div class="pt-3 text-center bg-light" id="notloginbox">
+    <h5 class="pb-4">
+      こちらは管理者限定サイトとなっております
+    </h5>
+    <a class="text-decoration-none" href="/fec_app_folder/admins/login/">
+      管理者の方はこちらからログインください
+    </a>
+  </div>
   {% endif %}
-  <form method="POST">
-    {% csrf_token %}
-    <label>ニックネーム</label>
-    {{ form.username }}
-    {{ form.username.errors }}
-    <label>パスワード</label>
-    {{ form.password }}
-    {{ form.password.errors }}
-    <br>
-    <br>
-    <button type="submit" class="btn btn-secondary text-white ">ログイン</button>
-  </form>
+  
 </body>
 </html>

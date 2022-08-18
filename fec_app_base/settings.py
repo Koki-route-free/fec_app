@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fec_app_folder.apps.FecAppFolderConfig',
     'bootstrap4',
+    'fec_app_folder.apps.FecAppFolderConfig',
 ]
 
 AUTH_USER_MODEL = 'fec_app_folder.UserDB'
@@ -104,6 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {'min_length': 4}
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -129,7 +130,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -143,5 +144,8 @@ PROJECT_NAME = os.path.basename(BASE_DIR)
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] 
 STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+LOGIN_REDIRECT_URL = "temporary/"

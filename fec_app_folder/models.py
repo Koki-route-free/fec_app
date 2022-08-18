@@ -6,11 +6,13 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserM
 from django.contrib.auth.validators import UnicodeUsernameValidator
 
 
+
 class CustomUserManager(UserManager):
   use_in_migrations = True
+  
   def _create_user(self, username, password, **extra_fields):
     username = self.model.normalize_username(username)
-    user = self.model(username, **extra_fields)
+    user = self.model(username=username, **extra_fields)
     user.set_password(password)
     user.save(using=self._db)
     return user
@@ -43,8 +45,8 @@ class UserDB(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False) # スタッフ権限
     is_superuser = models.BooleanField(default=False) # 管理者権限
     date_joined = models.DateTimeField(default=timezone.now) # アカウント作成日時
-    password_changed = models.BooleanField(default=False, null=True) # パスワードを変更したかどうかのフラグ
-    password_changed_date = models.DateTimeField(null=True) # 最終パスワード変更日時
+    # password_changed = models.BooleanField(default=False, null=True) # パスワードを変更したかどうかのフラグ
+    # password_changed_date = models.DateTimeField(null=True) # 最終パスワード変更日時
 
     objects = CustomUserManager()
 
