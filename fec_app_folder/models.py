@@ -75,13 +75,21 @@ times = (
   (6, '6限目'),
 )
 weeks = (
-  ("月", "月曜日"),
-  ("火", "火曜日"),
-  ("水", "水曜日"),
-  ("木", "木曜日"),
-  ("金", "金曜日"),
-  ("土", "土曜日"),
-  ("日", "日曜日"),
+  (1, "月曜日"),
+  (2, "火曜日"),
+  (3, "水曜日"),
+  (4, "木曜日"),
+  (5, "金曜日"),
+  (6, "土曜日"),
+  (7, "日曜日"),
+)
+sounds = (
+    (1, '誰もいなかった'),
+    (2, '少しいたが静かだった'),
+    (3, '大勢いたが静かだった'),
+    (4, '普通'),
+    (5, '少しいたがうるさかった'),
+    (6, '大勢いてうるさかった'),
 )
 
 
@@ -126,10 +134,11 @@ class AssetDB(models.Model):
     room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
-    date = models.DateField("日付", blank=False, null=False, help_text="日付")
-    day_week = models.CharField("曜日", max_length=10, choices=weeks, blank=False, null=False, help_text="曜日")
-
+    date = models.DateField("日付", blank=False, null=False, auto_now=True, help_text="日付")
+    day_week = models.IntegerField("曜日", choices=weeks, blank=False, null=False, help_text="曜日")
+    use_num = models.IntegerField("利用人数", blank=False, null=False, help_text="利用人数")
+    sound = models.IntegerField("騒音度", choices=sounds, blank=False, null=False, help_text="騒音度")
     
     # 投稿1つずつの表紙
     def __str__(self):
-        return self.name
+        return self.room_number

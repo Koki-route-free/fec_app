@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cccabinet.jpn.org/bootstrap4/css/style.css">
-    <link rel="stylesheet" type='text/css' href="{% static 'css/base.css'%}">
+    <link rel="stylesheet" type='text/css' href="{% static 'css/base.css' %}">
     {% block extra_css %}{% endblock %}
 
     <title> FGW空き教室確認システム </title>
@@ -36,7 +36,7 @@
           {% comment %} 二つの要素を両端に配置↓ {% endcomment %}
           <div class="d-flex justify-content-between">
             {% comment %} 左上ロゴ↓ {% endcomment %}
-            <div class="logo"><img src="{% static 'images/Vcode_Logo.png' %}"></div>
+            <div class="logo"><img src="{% static 'img/Vcode_Logo.png' %}" alt="" class="img-fluid"></div>
 
             {% comment %} 不明 {% endcomment %}
             {% comment %} 右上メニュー↓  {% endcomment %}
@@ -55,11 +55,11 @@
           {% comment %} 二つの要素を両端に配置↓ {% endcomment %}
           <div class="d-flex justify-content-between">
             {% comment %} ロゴ↓ {% endcomment %}
-            <div class="logo"><img src="images/Vcode_Logo.png"></div>
+            <div class="logo"><img src="{% static 'img/Vcode_Logo.png' %}" class="img-fluid"></div>
             {% comment %} 管理者用画面に飛ぶ↓ {% endcomment %}
             <div class="pt-1 mr-3 mt-4 mb-4">
               <button type="button" class="btn btn-danger">
-                <a href="/fec_app_folder/admins/login/">
+                <a href="/fec_app_folder/admins/login/" class="">
                   管理者用画面はこちら
                 </a>
               </button>
