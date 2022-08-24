@@ -1,0 +1,24 @@
+{% extends 'admins/admins_base.html' %}
+{% load static %}
+{% block contents %}
+<form method="POST" class="d-flex justify-content-around">
+  {% if form.errors  %}
+  <p>全て入力してください</p>
+  {% endif %}
+  {% csrf_token %}
+  <label>教室名</label>
+  <div>
+    {{ form.room_number }}
+    {{ form.room_number.errors }}
+  </div>
+  <label>収容人数</label>
+  <div>
+    {{ form.capacity }}
+    {{ form.capacity.errors }}
+  </div>
+  <p>人</p>
+  <div>
+    <button type="submit" class="btn btn-secondary text-white ">登録</button>
+  </div>
+</form>
+{% endblock %}

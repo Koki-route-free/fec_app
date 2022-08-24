@@ -3,5 +3,5 @@ from django.views import View
 
 class index(View):
     def get(self, request, *args, **kwargs):
-        return redirect(reverse('fec_app_folder:users_top_page'))
+        return redirect(reverse('fec_app_folder:users/top_page/'))
 index = index.as_view()

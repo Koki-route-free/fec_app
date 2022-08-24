@@ -93,16 +93,31 @@ sounds = (
 )
 
 
+class RoomDB(models.Model):
+    class Meta:
+        verbose_name = 'RoomDB'
+        verbose_name_plural = 'RoomDB'
+
+    room_number = models.CharField("教室名", max_length=4, primary_key=True, blank=False, null=False, help_text="教室名")
+    capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
+
+    # 投稿1つずつの表紙
+    def __str__(self):
+        return self.room_number
+
+
+# 直す
 class SolidDB(models.Model):
     class Meta:
         verbose_name = 'SolidDB'
         verbose_name_plural = 'SolidDB'
 
-    day_week = models.CharField("曜日", max_length=10, choices=weeks, blank=False, null=False, help_text="曜日")
+    day_week = models.IntegerField("曜日", max_length=10, choices=weeks, blank=False, null=False, help_text="曜日")
     room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
-    class_tf = models.BooleanField("利用状況", help_text="利用ならTrue空きならFalse")
+    class_tf = models.BooleanField("利用状況", default=False, help_text="利用ならTrue空きならFalse")
+    comment = models.CharField("コメント", max_length=255, blank=True, null=True, help_text="コメント")
 
     # 投稿1つずつの表紙
     def __str__(self):
