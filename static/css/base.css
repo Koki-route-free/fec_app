@@ -7,7 +7,7 @@ a{
   text: none;
 }
 a:hover{
-  opacity: 0.7;
+  opacity: 0.9;
 }
 .default_color{
   color: orange;
@@ -16,6 +16,7 @@ a:hover{
   font-size: 40px;
   font-family: 'Inspiration', cursive;
 }
+
 @media(max-width:600px){
   .version_pc{
     display: none;
@@ -25,7 +26,4 @@ a:hover{
   .version_telephone{
     display: none;
   }
-}
-#footer{
-  min-width: 350px;
 }

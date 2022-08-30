@@ -4,6 +4,7 @@
 {% bootstrap_javascript jquery='slim' %}
 {% load static %}
 <html lang="ja">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -19,13 +20,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cccabinet.jpn.org/bootstrap4/css/style.css">
-    <link rel="stylesheet" type='text/css' href="{% static 'css/base.css' %}">
-    {% block extra_css %}{% endblock %}
+
+    <link rel="stylesheet" type='text/css' href="{% static 'css/base.css'%}">
 
     <title> FGW空き教室確認システム </title>
     
+    {% block extra_css %}{% endblock %}
     
   </head>
+
   <body>
     <!-- ↓↓１番上のナビゲーションバー↓↓ -->
     {% comment %} スマホ用 {% endcomment %}
@@ -36,12 +39,10 @@
           {% comment %} 二つの要素を両端に配置↓ {% endcomment %}
           <div class="d-flex justify-content-between">
             {% comment %} 左上ロゴ↓ {% endcomment %}
-            <div class="logo"><img src="{% static 'img/Vcode_Logo.png' %}" alt="" class="img-fluid"></div>
-
-            {% comment %} 不明 {% endcomment %}
-            {% comment %} 右上メニュー↓  {% endcomment %}
-            <div class="pt-1 mr-2 mt-2 mb-2">
-            <span class="material-icons" id="open">menu</span>
+            <div class="logo"><img src="media/Vcode_Logo.png"></div>
+            {% comment %} 右上メニューアンケート  {% endcomment %}
+            <div class="pt-1 mr-2 mt-2 mb-3">
+              <a href="http://localhost:8080/fec_app_folder/users/reviews/" class="btn btn-info" role="button">アンケート</a>
             </div>
           </div>
         </div>
@@ -55,14 +56,10 @@
           {% comment %} 二つの要素を両端に配置↓ {% endcomment %}
           <div class="d-flex justify-content-between">
             {% comment %} ロゴ↓ {% endcomment %}
-            <div class="logo"><img src="{% static 'img/Vcode_Logo.png' %}" class="img-fluid"></div>
+            <div class="logo"><img src="images/Vcode_Logo.png"></div>
             {% comment %} 管理者用画面に飛ぶ↓ {% endcomment %}
-            <div class="pt-1 mr-3 mt-4 mb-4">
-              <button type="button" class="btn btn-danger">
-                <a href="/fec_app_folder/admins/login/" class="">
-                  管理者用画面はこちら
-                </a>
-              </button>
+            <div class="pt-1 mr-2 mt-2 mb-3">
+              <button type="button" class="btn btn-danger">管理者用画面はこちら</button>
               {% comment %} ↑リンクの入れ方がわからないです {% endcomment %}
             </div>
           </div>
