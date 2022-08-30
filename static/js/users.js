@@ -1,4 +1,33 @@
+var today = new Date();
+var month = ('00' + (today.getMonth()+1)).slice(-2);
+var date = ('00' + today.getDate()).slice(-2);
+var ymd = today.getFullYear()+"-"+ month +"-"+ date;
 
+var nextweek = new Date();
+nextweek.setDate(nextweek.getDate()+7);
+var month = ('00' + (nextweek.getMonth()+1)).slice(-2);
+var date = ('00' + nextweek.getDate()).slice(-2);
+var ymd_1 = nextweek.getFullYear()+"-"+ month +"-"+ date;
+
+$('#calendar').html('<input type="date"  min="'+ ymd +'" max="' + ymd_1 + '" value="' + ymd +'">');
+
+var hour = ('00' + today.getHours()).slice(-2);
+var min = ('00' + today.getMinutes()).slice(-2);
+var time = hour+min;
+
+if (time < 1040) {
+  $('#lecture').html('<option selected>１限</option><option value="2">２限</option><option value="3">３限</option><option value="4">４限</option><option value="5">５限</option><option value="6">６限</option>');
+} else if (1040 <= time && time < 1230){
+  $('#lecture').html('<option value="1">１限</option><option selected>２限</option><option value="3">３限</option><option value="4">４限</option><option value="5">５限</option><option value="6">６限</option>');
+} else if (1230 <= time && time < 1500){
+  $('#lecture').html('<option value="1">１限</option><option value="2">２限</option><option selected>３限</option><option value="4">４限</option><option value="5">５限</option><option value="6">６限</option>');
+} else if (1500 <= time && time < 1650){
+  $('#lecture').html('<option value="1">１限</option><option value="2">２限</option><option value="3">３限</option><option selected>４限</option><option value="5">５限</option><option value="6">６限</option>');
+} else if (1650 <= time && time < 1840){
+  $('#lecture').html('<option value="1">１限</option><option value="2">２限</option><option value="3">３限</option><option value="4">４限</option><option selected>５限</option><option value="6">６限</option>');
+} else {
+  $('#lecture').html('<option value="1">１限</option><option value="2">２限</option><option value="3">３限</option><option value="4">４限</option><option value="5">５限</option><option selected>６限</option>');
+}
 
 //任意のタブにURLからリンクするための設定
 function GethashID (hashIDName){
