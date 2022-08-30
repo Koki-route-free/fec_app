@@ -6,11 +6,13 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserM
 from django.contrib.auth.validators import UnicodeUsernameValidator
 
 
+
 class CustomUserManager(UserManager):
   use_in_migrations = True
+  
   def _create_user(self, username, password, **extra_fields):
     username = self.model.normalize_username(username)
-    user = self.model(username, **extra_fields)
+    user = self.model(username=username, **extra_fields)
     user.set_password(password)
     user.save(using=self._db)
     return user
@@ -43,8 +45,8 @@ class UserDB(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False) # スタッフ権限
     is_superuser = models.BooleanField(default=False) # 管理者権限
     date_joined = models.DateTimeField(default=timezone.now) # アカウント作成日時
-    password_changed = models.BooleanField(default=False, null=True) # パスワードを変更したかどうかのフラグ
-    password_changed_date = models.DateTimeField(null=True) # 最終パスワード変更日時
+    # password_changed = models.BooleanField(default=False, null=True) # パスワードを変更したかどうかのフラグ
+    # password_changed_date = models.DateTimeField(null=True) # 最終パスワード変更日時
 
     objects = CustomUserManager()
 
@@ -73,26 +75,49 @@ times = (
   (6, '6限目'),
 )
 weeks = (
-  ("月", "月曜日"),
-  ("火", "火曜日"),
-  ("水", "水曜日"),
-  ("木", "木曜日"),
-  ("金", "金曜日"),
-  ("土", "土曜日"),
-  ("日", "日曜日"),
+  (1, "月曜日"),
+  (2, "火曜日"),
+  (3, "水曜日"),
+  (4, "木曜日"),
+  (5, "金曜日"),
+  (6, "土曜日"),
+  (7, "日曜日"),
+)
+sounds = (
+    (1, '誰もいなかった'),
+    (2, '少しいたが静かだった'),
+    (3, '大勢いたが静かだった'),
+    (4, '普通'),
+    (5, '少しいたがうるさかった'),
+    (6, '大勢いてうるさかった'),
 )
 
 
+class RoomDB(models.Model):
+    class Meta:
+        verbose_name = 'RoomDB'
+        verbose_name_plural = 'RoomDB'
+
+    room_number = models.CharField("教室名", max_length=4, primary_key=True, blank=False, null=False, help_text="教室名")
+    capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
+
+    # 投稿1つずつの表紙
+    def __str__(self):
+        return self.room_number
+
+
+# 直す
 class SolidDB(models.Model):
     class Meta:
         verbose_name = 'SolidDB'
         verbose_name_plural = 'SolidDB'
 
-    day_week = models.CharField("曜日", max_length=10, choices=weeks, blank=False, null=False, help_text="曜日")
+    day_week = models.IntegerField("曜日", max_length=10, choices=weeks, blank=False, null=False, help_text="曜日")
     room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
-    class_tf = models.BooleanField("利用状況", help_text="利用ならTrue空きならFalse")
+    class_tf = models.BooleanField("利用状況", default=False, help_text="利用ならTrue空きならFalse")
+    comment = models.CharField("コメント", max_length=255, blank=True, null=True, help_text="コメント")
 
     # 投稿1つずつの表紙
     def __str__(self):
@@ -124,10 +149,11 @@ class AssetDB(models.Model):
     room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
-    date = models.DateField("日付", blank=False, null=False, help_text="日付")
-    day_week = models.CharField("曜日", max_length=10, choices=weeks, blank=False, null=False, help_text="曜日")
-
+    date = models.DateField("日付", blank=False, null=False, auto_now=True, help_text="日付")
+    day_week = models.IntegerField("曜日", choices=weeks, blank=False, null=False, help_text="曜日")
+    use_num = models.IntegerField("利用人数", blank=False, null=False, help_text="利用人数")
+    sound = models.IntegerField("騒音度", choices=sounds, blank=False, null=False, help_text="騒音度")
     
     # 投稿1つずつの表紙
     def __str__(self):
-        return self.name
+        return self.room_number

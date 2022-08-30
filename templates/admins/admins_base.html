@@ -8,27 +8,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LOGIN</title>
+  <title>Document</title>
   <link rel="stylesheet" type='text/css' href="{% static 'css/admins.css'%}">
 </head>
 <body>
+  {% if user.username %}
+  {% block contents %}
+  {% endblock %}
+  {% else %}
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-5 border-bottom">
-    <h1 class="h2 ml-3">LOGIN</h1>
+    <h2 class="h2">ログインされていません</h2>
   </div>
-  {% if form.errors  %}
-  <p>ユーザーID, パスワードが一致しません．</p>
+  <br>
+  <div class="pt-3 text-center bg-light" id="notloginbox">
+    <h5 class="pb-4">
+      こちらは管理者限定サイトとなっております
+    </h5>
+    <a class="text-decoration-none" href="/fec_app_folder/admins/login/">
+      管理者の方はこちらからログインください
+    </a>
+  </div>
   {% endif %}
-  <form method="POST" class="mr-5 ml-5 mt-5">
-    {% csrf_token %}
-    <label class="mb-3">username</label>
-    {{ form.username }}
-    {{ form.username.errors }}
-    <label class="mt-4 mb-3">password</label>
-    {{ form.password }}
-    {{ form.password.errors }}
-    <br>
-    <br>
-    <button type="submit" class="btn btn-secondary text-white ">submit</button>
-  </form>
+  
 </body>
 </html>
