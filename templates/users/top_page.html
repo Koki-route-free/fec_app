@@ -5,11 +5,264 @@
 {% endblock %}
 {% block contents %}
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-5 border-bottom">
-  <h1 class="h2">saved</h1>
+<div class="d-flex justify-content-between align-items-center mt-3 mb-1">
+    <div class="mt-2 mr-1" id="calendar">
+      {% comment %} ↓日付を選択するプルダウンメニュー↓ {% endcomment %}
+      <input type="date"  min="yyyy-MM-dd" max="yyyy-MM-dd" value="yyyy-MM-dd">
+    </div>  
+
+  {% comment %} ↓時限を選択するプルダウンメニュー↓ {% endcomment %}
+  <div class="lecturespulldown">
+    <select class="custom-select" id="lecture">
+      {% comment %} ↓現在の時限が選択されているようにする {% endcomment %}
+      <option value="1">１限</option>
+      <option value="2">２限</option>
+      <option value="3">３限</option>
+      <option value="4">４限</option>
+      <option value="5">５限</option>
+      <option value="6">６限</option>
+    </select>
+  </div>  
+  <h5 class="h5 mt-2 ml-1">空き教室状況</h5>  
 </div>
-<div>
-     comming soon
+
+{% comment %} ↓表示ボタン↓ {% endcomment %}
+<div class="d-flex justify-content-center">
+  <button class="btn btn-outline-secondary mt-2" type="button">表示</button>
 </div>
+<br>
+
+{% comment %} ↓タブメニュー↓ {% endcomment %}
+<div class="d-flex flex-wrap justify-content-between">
+  <ul class="nav nav-tabs" id="tab">
+    <li class="nav-item">
+      <a class="nav-link active" href="#second">2階</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#third">3階</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#fourth">4階</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#fifth">5階</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#sixth">6階</a>
+    </li>
+  </ul>
+</div>
+
+{% comment %} ↓２階タブメニュー内容↓ {% endcomment %}
+<div id="second" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <td>PC Room</td><td class="PCRoom">○</td>
+      </tr>
+    </tbody>
+  </table>
+</div><!--/area-->
+
+{% comment %} ↓３階タブメニュー内容↓ {% endcomment %}
+<div id="third" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <td>F301</td><td class="F301">○</td>
+      </tr>
+      <tr>
+        <td>F302</td><td class="F302">○</td>
+      </tr>
+      <tr>
+        <td>F303</td><td class="F303">○</td>
+      </tr>
+      <tr>
+        <td>F304</td><td class="F304">○</td>
+      </tr>
+      <tr>
+        <td>F305</td><td class="F305">○</td>
+      </tr>
+      <tr>
+        <td>F306</td><td class="F306">○</td>
+      </tr>
+      <tr>
+        <td>F307</td><td class="F307">○</td>
+      </tr>
+      <tr>
+        <td>F308</td><td class="F308">○</td>
+      </tr>
+      <tr>
+        <td>F309</td><td class="F309">○</td>
+      </tr>
+      <tr>
+        <td>F310</td><td class="F310">○</td>
+      </tr>
+      <tr>
+        <td>F311</td><td class="F311">○</td>
+      </tr>
+      <tr>
+        <td>F312</td><td class="F312">○</td>
+      </tr>
+    </tbody>
+  </table>
+</div><!--/area-->
+
+{% comment %} ↓４階タブメニュー内容↓ {% endcomment %}
+<div id="fourth" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+         <tr>
+              <td>F401</td><td class="F401">○</td>
+         </tr>
+         <tr>
+              <td>F402</td><td class="F402">○</td>
+         </tr>
+         <tr>
+              <td>F403</td><td class="F403">○</td>
+         </tr>
+         <tr>
+              <td>F404</td><td class="F404">○</td>
+         </tr>
+         <tr>
+              <td>F405</td><td class="F405">○</td>
+         </tr>
+         <tr>
+              <td>F406</td><td class="F406">○</td>
+         </tr>
+         <tr>
+              <td>F407</td><td class="F407">○</td>
+         </tr>
+         <tr>
+              <td>F408</td><td class="F408">○</td>
+         </tr>
+         <tr>
+              <td>F409</td><td class="F409">○</td>
+         </tr>
+         <tr>
+              <td>F410</td><td class="F410">○</td>
+         </tr>
+         <tr>
+              <td>F411</td><td class="F411">○</td>
+         </tr>
+    </tbody>
+  </table>
+</div><!--/area-->
+
+{% comment %} ↓５階タブメニュー内容↓ {% endcomment %}
+<div id="fifth" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+         <tr>
+              <td>F501</td><td class="F501">○</td>
+         </tr>
+         <tr>
+              <td>F502</td><td class="F502">○</td>
+         </tr>
+         <tr>
+              <td>F503</td><td class="F503">○</td>
+         </tr>
+         <tr>
+              <td>F504</td><td class="F504">○</td>
+         </tr>
+         <tr>
+              <td>F505</td><td class="F505">○</td>
+         </tr>
+         <tr>
+              <td>F506</td><td class="F506">○</td>
+         </tr>
+         <tr>
+              <td>F507</td><td class="F507">○</td>
+         </tr>
+         <tr>
+              <td>F508</td><td class="F508">○</td>
+         </tr>
+         <tr>
+              <td>F509</td><td class="F509">○</td>
+         </tr>
+         <tr>
+              <td>F510</td><td class="F510">○</td>
+         </tr>
+         <tr>
+              <td>F511</td><td class="F511">○</td>
+         </tr>
+         <tr>
+              <td>F512</td><td class="F512">○</td>
+         </tr>
+         <tr>
+              <td>F513</td><td class="F513">○</td>
+         </tr>
+    </tbody>
+  </table>
+</div><!--/area-->
+
+{% comment %} ↓６階タブメニュー内容↓ {% endcomment %}
+<div id="sixth" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+         <tr>
+              <td>F601</td><td class="F601">○</td>
+         </tr>
+         <tr>
+              <td>F602</td><td class="F602">○</td>
+         </tr>
+         <tr>
+              <td>F603</td><td class="F603">○</td>
+         </tr>
+         <tr>
+              <td>F604</td><td class="F604">○</td>
+         </tr>
+         <tr>
+              <td>F605</td><td class="F605">○</td>
+         </tr>
+         <tr>
+              <td>F606</td><td class="F606">○</td>
+         </tr>
+         <tr>
+              <td>F607</td><td class="F607">○</td>
+         </tr>
+         <tr>
+              <td>F608</td><td class="F608">○</td>
+         </tr>
+    </tbody>
+  </table>
+</div><!--/area-->
+
+<script>
+  var today = new Date();
+  var month = ('00' + (today.getMonth()+1)).slice(-2);
+  var date = ('00' + today.getDate()).slice(-2);
+  var ymd = today.getFullYear()+"-"+ month +"-"+ date;
+
+  var nextweek = new Date();
+  nextweek.setDate(nextweek.getDate()+7);
+  var month = ('00' + (nextweek.getMonth()+1)).slice(-2);
+  var date = ('00' + nextweek.getDate()).slice(-2);
+  var ymd_1 = nextweek.getFullYear()+"-"+ month +"-"+ date;
+
+  $('#calendar').html('<input type="date"  min="'+ ymd +'" max="' + ymd_1 + '" value="' + ymd +'">');
+
+  var hour = ('00' + today.getHours()).slice(-2);
+  var min = ('00' + today.getMinutes()).slice(-2);
+  var time = hour+min;
+
+  if (time < 1040) {
+    $('#lecture').html('<option selected>１限</option><option value="2">２限</option><option value="3">３限</option><option value="4">４限</option><option value="5">５限</option><option value="6">６限</option>');
+  } else if (1040 <= time && time < 1230){
+    $('#lecture').html('<option value="1">１限</option><option selected>２限</option><option value="3">３限</option><option value="4">４限</option><option value="5">５限</option><option value="6">６限</option>');
+  } else if (1230 <= time && time < 1500){
+    $('#lecture').html('<option value="1">１限</option><option value="2">２限</option><option selected>３限</option><option value="4">４限</option><option value="5">５限</option><option value="6">６限</option>');
+  } else if (1500 <= time && time < 1650){
+    $('#lecture').html('<option value="1">１限</option><option value="2">２限</option><option value="3">３限</option><option selected>４限</option><option value="5">５限</option><option value="6">６限</option>');
+  } else if (1650 <= time && time < 1840){
+    $('#lecture').html('<option value="1">１限</option><option value="2">２限</option><option value="3">３限</option><option value="4">４限</option><option selected>５限</option><option value="6">６限</option>');
+  } else {
+    $('#lecture').html('<option value="1">１限</option><option value="2">２限</option><option value="3">３限</option><option value="4">４限</option><option value="5">５限</option><option selected>６限</option>');
+  }
+  
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/users.js'%}"></script>  
 
 {% endblock %}
