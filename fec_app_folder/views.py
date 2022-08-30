@@ -6,12 +6,13 @@ from .forms import LoginForm, ClassCreateForm
 from django.views.generic import CreateView, ListView
 from django.db.models import Q
 from django.contrib.auth import login, authenticate
-from .models import UserDB, SolidDB, TemporaryDB, AssetDB
+from .models import RoomDB, UserDB, SolidDB, TemporaryDB, AssetDB
 
 
-class Admins_Solid_View(CreateView):  
-    def get(self, request, *args, **kwargs):  
-        return render(request, 'admins/login/solid.html')
+class Admins_Solid_View(ListView):  
+    template_name = 'admins/login/solid.html'
+    model = RoomDB
+    ordering = 'room_number'
 
 
 class Admins_Temporary_View(View):  

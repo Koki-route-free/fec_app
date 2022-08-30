@@ -20,3 +20,7 @@ class ClassCreateForm(forms.ModelForm):
     class Meta:
         model = RoomDB
         fields = ("room_number", "capacity")
+
+
+# class SolidCreateForm(forms.ModelForm):
+    

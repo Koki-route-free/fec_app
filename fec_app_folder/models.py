@@ -106,13 +106,12 @@ class RoomDB(models.Model):
         return self.room_number
 
 
-# 直す
 class SolidDB(models.Model):
     class Meta:
         verbose_name = 'SolidDB'
         verbose_name_plural = 'SolidDB'
 
-    day_week = models.IntegerField("曜日", max_length=10, choices=weeks, blank=False, null=False, help_text="曜日")
+    day_week = models.IntegerField("曜日", choices=weeks, blank=False, null=False, help_text="曜日")
     room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
