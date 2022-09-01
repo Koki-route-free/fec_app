@@ -14,59 +14,61 @@
   <p>テキストボックスには半角英数字で入力してください。</p>
 </div>
 
-{% comment %} ↓学籍番号入力↓ {% endcomment %}
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"> 学籍番号 </span>
+<form>
+  {% comment %} ↓学籍番号入力↓ {% endcomment %}
+  <div class="input-group mb-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"> 学籍番号 </span>
+    </div>
+    <input type="text" class="form-control" pattern="^[0-9a-zA-Z]+$" title="半角英数字で" required placeholder="Student ID" aria-label="Student ID" aria-describedby="basic-addon1">
   </div>
-  <input type="text" class="form-control" placeholder="Student ID" aria-label="Student ID" aria-describedby="basic-addon1">
-</div>
 
-{% comment %} ↓利用している部屋番号入力↓ {% endcomment %}
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"> 利用部屋番号 </span>
+  {% comment %} ↓利用している部屋番号入力↓ {% endcomment %}
+  <div class="input-group mb-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"> 利用部屋番号 </span>
+    </div>
+    <input type="text" class="form-control" pattern="^[0-9a-zA-Z]+$" title="半角英数字で"required placeholder="Room Number" aria-label="Room Number" aria-describedby="basic-addon1">
   </div>
-  <input type="text" class="form-control" placeholder="Room Number" aria-label="Room Number" aria-describedby="basic-addon1">
-</div>
 
-{% comment %} ↓部屋にいる人数入力↓ {% endcomment %}
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"> 部屋にいる人数 </span>
+  {% comment %} ↓部屋にいる人数入力↓ {% endcomment %}
+  <div class="input-group mb-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"> 部屋にいる人数 </span>
+    </div>
+    <input type="text" class="form-control" pattern="^[0-9]+$" titel="数字で" required placeholder="People" aria-label="People" aria-describedby="basic-addon1">
   </div>
-  <input type="text" class="form-control" placeholder="People" aria-label="People" aria-describedby="basic-addon1">
-</div>
 
-{% comment %} ↓騒音度選択↓ {% endcomment %}
-<p>教室内の騒音度を評価してください</p>
-<div class="d-flex justify-content-between">
-  <p>silent&nbsp;&nbsp;&nbsp;</p>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="silent">
+  {% comment %} ↓騒音度選択↓ {% endcomment %}
+  <p>教室内の騒音度を評価してください</p>
+  <div class="d-flex justify-content-between">
+    <p>Silent&nbsp;&nbsp;&nbsp;</p>
+    <div class="form-check form-check-inline mb-2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Radio1" value="誰もいなかった">
+    </div>
+    <div class="form-check form-check-inline mb-2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Radio2" value="少しいたが静かだった">
+    </div>
+    <div class="form-check form-check-inline mb-2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Radio3" value="大勢いたが静かだった">
+    </div>
+    <div class="form-check form-check-inline mb-2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Radio4" value="普通">
+    </div>
+    <div class="form-check form-check-inline mb-2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Radio5" value="少しいたがうるさかった">
+    </div>
+    <div class="form-check form-check-inline mb-2">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Radio6" value="大勢いてうるさかった">
+    </div>
+    <p>Noizy</p>
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="relatively_silent">
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="normal">
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="relatively_noisy">
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="relatively_noisy">
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="noisy">
-  </div>
-  <p>noizy</p>
-</div>
-<br>
+  <br>
 
-{% comment %} 送信ボタン {% endcomment %}
-<div class="d-flex justify-content-center">
-  <input type='submit'></input>
-</div>
+  {% comment %} 送信ボタン {% endcomment %}
+  <div class="d-flex justify-content-center">
+    <input type='submit'></input>
+  </div>
+</form>
 
 {% endblock %}

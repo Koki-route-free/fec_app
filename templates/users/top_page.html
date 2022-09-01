@@ -5,7 +5,7 @@
 {% endblock %}
 {% block contents %}
 
-<div class="d-flex justify-content-between align-items-center mt-3 mb-1">
+<div class="d-flex justify-content-between align-items-center mt-5 mb-1">
     <div class="mt-2 mr-1" id="calendar">
       {% comment %} ↓日付を選択するプルダウンメニュー↓ {% endcomment %}
       <input type="date"  min="yyyy-MM-dd" max="yyyy-MM-dd" value="yyyy-MM-dd">
@@ -68,42 +68,11 @@
 <div id="third" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
+      {% for i in F3classrooms %}
       <tr>
-        <td>F301</td><td class="F301">○</td>
+        <td>{{i}}</td><td>○</td>
       </tr>
-      <tr>
-        <td>F302</td><td class="F302">○</td>
-      </tr>
-      <tr>
-        <td>F303</td><td class="F303">○</td>
-      </tr>
-      <tr>
-        <td>F304</td><td class="F304">○</td>
-      </tr>
-      <tr>
-        <td>F305</td><td class="F305">○</td>
-      </tr>
-      <tr>
-        <td>F306</td><td class="F306">○</td>
-      </tr>
-      <tr>
-        <td>F307</td><td class="F307">○</td>
-      </tr>
-      <tr>
-        <td>F308</td><td class="F308">○</td>
-      </tr>
-      <tr>
-        <td>F309</td><td class="F309">○</td>
-      </tr>
-      <tr>
-        <td>F310</td><td class="F310">○</td>
-      </tr>
-      <tr>
-        <td>F311</td><td class="F311">○</td>
-      </tr>
-      <tr>
-        <td>F312</td><td class="F312">○</td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div><!--/area-->
@@ -112,39 +81,11 @@
 <div id="fourth" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
-         <tr>
-              <td>F401</td><td class="F401">○</td>
-         </tr>
-         <tr>
-              <td>F402</td><td class="F402">○</td>
-         </tr>
-         <tr>
-              <td>F403</td><td class="F403">○</td>
-         </tr>
-         <tr>
-              <td>F404</td><td class="F404">○</td>
-         </tr>
-         <tr>
-              <td>F405</td><td class="F405">○</td>
-         </tr>
-         <tr>
-              <td>F406</td><td class="F406">○</td>
-         </tr>
-         <tr>
-              <td>F407</td><td class="F407">○</td>
-         </tr>
-         <tr>
-              <td>F408</td><td class="F408">○</td>
-         </tr>
-         <tr>
-              <td>F409</td><td class="F409">○</td>
-         </tr>
-         <tr>
-              <td>F410</td><td class="F410">○</td>
-         </tr>
-         <tr>
-              <td>F411</td><td class="F411">○</td>
-         </tr>
+      {% for i in F4classrooms %}
+      <tr>
+        <td>{{i}}</td><td>○</td>
+      </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div><!--/area-->
@@ -153,45 +94,11 @@
 <div id="fifth" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
-         <tr>
-              <td>F501</td><td class="F501">○</td>
-         </tr>
-         <tr>
-              <td>F502</td><td class="F502">○</td>
-         </tr>
-         <tr>
-              <td>F503</td><td class="F503">○</td>
-         </tr>
-         <tr>
-              <td>F504</td><td class="F504">○</td>
-         </tr>
-         <tr>
-              <td>F505</td><td class="F505">○</td>
-         </tr>
-         <tr>
-              <td>F506</td><td class="F506">○</td>
-         </tr>
-         <tr>
-              <td>F507</td><td class="F507">○</td>
-         </tr>
-         <tr>
-              <td>F508</td><td class="F508">○</td>
-         </tr>
-         <tr>
-              <td>F509</td><td class="F509">○</td>
-         </tr>
-         <tr>
-              <td>F510</td><td class="F510">○</td>
-         </tr>
-         <tr>
-              <td>F511</td><td class="F511">○</td>
-         </tr>
-         <tr>
-              <td>F512</td><td class="F512">○</td>
-         </tr>
-         <tr>
-              <td>F513</td><td class="F513">○</td>
-         </tr>
+      {% for i in F5classrooms %}
+      <tr>
+        <td>{{i}}</td><td>○</td>
+      </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div><!--/area-->
@@ -200,30 +107,11 @@
 <div id="sixth" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
-         <tr>
-              <td>F601</td><td class="F601">○</td>
-         </tr>
-         <tr>
-              <td>F602</td><td class="F602">○</td>
-         </tr>
-         <tr>
-              <td>F603</td><td class="F603">○</td>
-         </tr>
-         <tr>
-              <td>F604</td><td class="F604">○</td>
-         </tr>
-         <tr>
-              <td>F605</td><td class="F605">○</td>
-         </tr>
-         <tr>
-              <td>F606</td><td class="F606">○</td>
-         </tr>
-         <tr>
-              <td>F607</td><td class="F607">○</td>
-         </tr>
-         <tr>
-              <td>F608</td><td class="F608">○</td>
-         </tr>
+      {% for i in F6classrooms %}
+      <tr>
+        <td>{{i}}</td><td>○</td>
+      </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div><!--/area-->
