@@ -1,8 +1,9 @@
+from urllib import request
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.contrib.auth.views import LogoutView, LoginView
-from .forms import LoginForm, ClassCreateForm
+from .forms import LoginForm, ClassCreateForm, AssetForm
 from django.views.generic import CreateView, ListView
 from django.db.models import Q
 from django.contrib.auth import login, authenticate
@@ -21,6 +22,7 @@ class Admins_Temporary_View(View):
     
     
 class Admins_Add_classroom_View(CreateView):
+    model = RoomDB
     form_class = ClassCreateForm
     template_name = 'admins/login/add_classroom.html'
     success_url = reverse_lazy('fec_app_folder:admins/login/solid/')
@@ -31,9 +33,24 @@ class Admins_Login_View(LoginView):
     template_name = 'admins/login.html'
 
 
-class Users_Reviews_View(View):  
-    def get(self, request, *args, **kwargs):  
-        return render(request, 'users/reviews.html')
+class Users_Reviews_View(CreateView):  
+    def post(self, request, *args, **kwargs):
+        form = AssetForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            student_number = form.cleaned_data.get('student_number')
+            room_number = form.cleaned_data.get('room_number')
+            use_num = form.cleaned_data.get('use_num')
+            classification = form.cleaned_data.get('classification')
+            
+            contents = authenticate(name=name, address=address, homepage=homepage, classification=classification, telephone=telephone)
+            login(request, contents)
+            return redirect('/')
+        return render(request, 'fill_in_time_app/create_contents.html', {'form': form,})
+
+    def get(self, request, *args, **kwargs):
+        form = ContentsCreateForm(request.POST)
+        return  render(request, 'fill_in_time_app/create_contents.html', {'form': form,})
 
     
 class Users_Top_page_View(View):  

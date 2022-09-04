@@ -144,7 +144,7 @@ class AssetDB(models.Model):
         verbose_name = 'AssetDB'
         verbose_name_plural = 'AssetDB'
 
-    student_number = models.CharField("学籍番号", max_length=11, blank=True, null=True, help_text="学籍番号")
+    student_number = models.CharField("学籍番号", max_length=11, blank=False, null=False, help_text="学籍番号")
     room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
@@ -155,4 +155,4 @@ class AssetDB(models.Model):
     
     # 投稿1つずつの表紙
     def __str__(self):
-        return self.room_number
+        return self.student_number
