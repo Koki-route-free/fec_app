@@ -22,7 +22,6 @@
     background: #fff;
 }
 
-
 /*エリアの表示非表示と形状*/
 .area {
     display: none;
@@ -64,18 +63,9 @@ a {
     text-decoration: none;
 }
 
-.area h2 {
-    font-size: 1.3rem;
-    margin: 0 0 20px 10px;
-}
-
 .area li {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-}
-
-.h2 {
-    text-align: center;
 }
 
 /*===== プルダウンメニューのCSS =====*/
@@ -90,11 +80,6 @@ a {
     padding: 0.5em 1em;
     margin: 2em 0;
     border: double 5px rgb(236, 189, 0);
-}
-
-.box p {
-    margin: 0; 
-    padding: 0;
 }
 
 option {

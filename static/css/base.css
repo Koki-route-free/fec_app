@@ -14,3 +14,19 @@ a:hover{
 .default_color{
   color: orange;
 }
+
+.title_name{
+  font-size: 40px;
+  font-family: 'Inspiration', cursive;
+}
+
+@media(max-width:600px){
+  .version_pc{
+    display: none;
+  }
+}
+@media(min-width:601px){
+  .version_telephone{
+    display: none;
+  }
+}
