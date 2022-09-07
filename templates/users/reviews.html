@@ -22,7 +22,11 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1"> 学籍番号 </span>
     </div>
-    <input type="text" class="form-control" placeholder="Student ID" aria-label="Student ID" aria-describedby="basic-addon1" name="student_number">
+    {% comment %} <input type="text" class="form-control" placeholder="Student ID" aria-label="Student ID" aria-describedby="basic-addon1" name="student_number"> {% endcomment %}
+    <div>
+      {{ form.student_number }}
+      {{ form.student_number.errors }}
+    </div>
   </div>
 
   {% comment %} ↓利用している部屋番号入力↓ {% endcomment %}
@@ -30,7 +34,11 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1"> 利用部屋番号 </span>
     </div>
-    <input type="text" class="form-control" placeholder="Room Number" aria-label="Room Number" aria-describedby="basic-addon1" name="room_number">
+    {% comment %} <input type="text" class="form-control" placeholder="Room Number" aria-label="Room Number" aria-describedby="basic-addon1" name="room_number"> {% endcomment %}
+    <div>
+      {{ form.room_number }}
+      {{ form.room_number.errors }}
+    </div>
   </div>
 
   {% comment %} ↓部屋にいる人数入力↓ {% endcomment %}
@@ -38,20 +46,28 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1"> 部屋にいる人数 </span>
     </div>
-    <input type="text" class="form-control" placeholder="People" aria-label="People" aria-describedby="basic-addon1" name="use_num">
+    {% comment %} <input type="text" class="form-control" placeholder="People" aria-label="People" aria-describedby="basic-addon1" name="use_num"> {% endcomment %}
+    <div>
+      {{ form.use_num }}
+      {{ form.use_num.errors }}
+    </div>
   </div>
 
   {% comment %} ↓利用した時間割人数入力↓ {% endcomment %}
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text" id="basic-addon1"> 利用した次元 </span>
+      <span class="input-group-text" id="basic-addon1"> 利用した時間 </span>
     </div>
-    <input type="text" class="form-control" placeholder="People" aria-label="People" aria-describedby="basic-addon1" name="use_num">
+    {% comment %} <input type="text" class="form-control" placeholder="People" aria-label="People" aria-describedby="basic-addon1" name="time"> {% endcomment %}
+    <div>
+      {{ form.time }}
+      {{ form.time.errors }}
+    </div>
   </div>
 
   {% comment %} ↓騒音度選択↓ {% endcomment %}
   <p>教室内の騒音度を評価してください</p>
-  <div class="d-flex justify-content-between" name="sound">
+  {% comment %} <div class="d-flex justify-content-between" name="sound">
     <p>silent&nbsp;&nbsp;&nbsp;</p>
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="silent">
@@ -72,7 +88,12 @@
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="noisy">
     </div>
     <p>noizy</p>
+  </div> {% endcomment %}
+  <div>
+    {{ form.sound }}
+    {{ form.sound.errors }}
   </div>
+  
   <br>
   <div>
     <button type="submit" class="btn btn-secondary text-white ">送信</button>
