@@ -1,4 +1,5 @@
 Django>= 4.0, < 4.1
 django-bootstrap4
+django_boost
 psycopg2
 Pillow

@@ -98,7 +98,7 @@ class RoomDB(models.Model):
         verbose_name = 'RoomDB'
         verbose_name_plural = 'RoomDB'
 
-    room_number = models.CharField("教室名", max_length=4, primary_key=True, blank=False, null=False, help_text="教室名")
+    room_number = models.CharField("教室名", max_length=6, primary_key=True, blank=False, null=False, help_text="教室名")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
 
     # 投稿1つずつの表紙
@@ -112,10 +112,9 @@ class SolidDB(models.Model):
         verbose_name_plural = 'SolidDB'
 
     day_week = models.IntegerField("曜日", choices=weeks, blank=False, null=False, help_text="曜日")
-    room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
+    room_number = models.CharField("教室名", max_length=6, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
-    class_tf = models.BooleanField("利用状況", default=False, help_text="利用ならTrue空きならFalse")
     comment = models.CharField("コメント", max_length=255, blank=True, null=True, help_text="コメント")
 
     # 投稿1つずつの表紙
@@ -128,7 +127,7 @@ class TemporaryDB(models.Model):
         verbose_name = 'TemporaryDB'
         verbose_name_plural = 'TemporaryDB'
 
-    room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
+    room_number = models.CharField("教室名", max_length=6, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
     student_reserved = models.IntegerField("学生予約", blank=False, null=False, default=0, help_text="学生予約(学生予約でないなら0学生予約なら人数)")
@@ -145,7 +144,7 @@ class AssetDB(models.Model):
         verbose_name_plural = 'AssetDB'
 
     student_number = models.CharField("学籍番号", max_length=11, blank=False, null=False, help_text="学籍番号")
-    room_number = models.CharField("教室名", max_length=4, blank=False, null=False, help_text="教室名")
+    room_number = models.CharField("教室名", max_length=6, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     date = models.DateField("日付", blank=False, null=False, auto_now=True, help_text="日付")
     # day_week = models.IntegerField("曜日", choices=weeks, blank=False, null=False, help_text="曜日")

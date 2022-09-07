@@ -13,14 +13,19 @@
     <td>6限</td>
     <br>
   </tr>
-  {% for i in object_list %}
   <tr class="d-flex justify-content-around">
-    <td>{{ i.room_number }}</td>
-    <td>{{ i.capacity}}</td>
-    <td></td>
-    <br>
+    {% for i in object_list %}
+      <td>{{ i.room_number }}</td>
+      <td>{{ i.capacity}}</td>
+      <td><input type="checkbox"><textarea></textarea></td>
+      <td><input type="checkbox"><textarea></textarea></td>
+      <td><input type="checkbox"><textarea></textarea></td>
+      <td><input type="checkbox"><textarea></textarea></td>
+      <td><input type="checkbox"><textarea></textarea></td>
+      <td><input type="checkbox"><textarea></textarea></td>
+      <br>
+    {% endfor %}
   </tr>
-  {% endfor %}
 </div>
 <div>
   <p>教室追加、編集は
