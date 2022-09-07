@@ -5,116 +5,120 @@
 {% endblock %}
 {% block contents %}
 
-<div class="d-flex justify-content-between align-items-center mt-5 mb-1">
-    <div class="mt-2 mr-1" id="calendar">
-      {% comment %} ↓日付を選択するプルダウンメニュー↓ {% endcomment %}
-      <input type="date"  min="yyyy-MM-dd" max="yyyy-MM-dd" value="yyyy-MM-dd">
+<form action="{% url 'fec_app_folder:users/top_page/' %}">
+  <div class="d-flex justify-content-between align-items-center mt-3 mb-1">
+      <div class="mt-2 mr-1" id="calendar">
+        {% comment %} ↓日付を選択するプルダウンメニュー↓ {% endcomment %}
+        <input type="date" min="yyyy-MM-dd" max="yyyy-MM-dd" value="{{ request.GET.date }}" name="date">
+      </div>  
+
+    {% comment %} ↓時限を選択するプルダウンメニュー↓ {% endcomment %}
+    <div class="lecturespulldown">
+      <select class="custom-select" id="lecture" name="time" value="{{ request.GET.time }}">
+        {% comment %} ↓現在の時限が選択されているようにする {% endcomment %}
+        <option value="1">１限</option>
+        <option value="2">２限</option>
+        <option value="3">３限</option>
+        <option value="4">４限</option>
+        <option value="5">５限</option>
+        <option value="6">６限</option>
+      </select>
     </div>  
-
-  {% comment %} ↓時限を選択するプルダウンメニュー↓ {% endcomment %}
-  <div class="lecturespulldown">
-    <select class="custom-select" id="lecture">
-      {% comment %} ↓現在の時限が選択されているようにする {% endcomment %}
-      <option value="1">１限</option>
-      <option value="2">２限</option>
-      <option value="3">３限</option>
-      <option value="4">４限</option>
-      <option value="5">５限</option>
-      <option value="6">６限</option>
-    </select>
-  </div>  
-  <h5 class="h5 mt-2 ml-1">空き教室状況</h5>  
-</div>
-
-{% comment %} ↓表示ボタン↓ {% endcomment %}
-<div class="d-flex justify-content-center">
-  <button class="btn btn-outline-secondary mt-2" type="button" id="reload">表示</button>
-</div>
-<br>
-
-  {% comment %} ↓タブメニュー↓ {% endcomment %}
-  <div class="d-flex flex-wrap justify-content-between">
-    <ul class="nav nav-tabs" id="tab">
-      <li class="nav-item">
-        <a class="nav-link active" href="#second">2階</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#third">3階</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#fourth">4階</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#fifth">5階</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#sixth">6階</a>
-      </li>
-    </ul>
+    <h5 class="h5 mt-2 ml-1">空き教室状況</h5>  
   </div>
 
-  {% comment %} ↓２階タブメニュー内容↓ {% endcomment %}
-  <div id="second" class="area">
-    <table class="table table-bordered table-striped">
-      <tbody>
-        <tr>
-          <td>PC Room</td><td class="PCRoom">○</td>
-        </tr>
-      </tbody>
-    </table>
-  </div><!--/area-->
+  {% comment %} ↓表示ボタン↓ {% endcomment %}
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-outline-secondary mt-2" type="submit">表示</button>
+  </div>
+</form>
+<br>
 
-  {% comment %} ↓３階タブメニュー内容↓ {% endcomment %}
-  <div id="third" class="area">
-    <table class="table table-bordered table-striped">
-      <tbody>
-        {% for i in F3classrooms %}
-        <tr>
-          <td>{{i}}</td><td>○</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div><!--/area-->
+{% comment %} ↓タブメニュー↓ {% endcomment %}
+<div class="d-flex flex-wrap justify-content-between">
+  <ul class="nav nav-tabs" id="tab">
+    <li class="nav-item">
+      <a class="nav-link active" href="#second">2階</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#third">3階</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#fourth">4階</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#fifth">5階</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#sixth">6階</a>
+    </li>
+  </ul>
+</div>
 
-  {% comment %} ↓４階タブメニュー内容↓ {% endcomment %}
-  <div id="fourth" class="area">
-    <table class="table table-bordered table-striped">
-      <tbody>
-        {% for i in F4classrooms %}
-        <tr>
-          <td>{{i}}</td><td>○</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div><!--/area-->
+{% comment %} ↓２階タブメニュー内容↓ {% endcomment %}
+<div id="second" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      {% for i in room2 %}
+      <tr>
+        <td>{{ i.room2 }}</td><td>{{ i.room2_tf }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div><!--/area-->
 
-  {% comment %} ↓５階タブメニュー内容↓ {% endcomment %}
-  <div id="fifth" class="area">
-    <table class="table table-bordered table-striped">
-      <tbody>
-        {% for i in F5classrooms %}
-        <tr>
-          <td>{{i}}</td><td>○</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div><!--/area-->
+{% comment %} ↓３階タブメニュー内容↓ {% endcomment %}
+<div id="third" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      {% for i in room3 %}
+      <tr>
+        <td>{{ i.room3 }}</td><td>{{ i.room3_tf }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div><!--/area-->
 
-  {% comment %} ↓６階タブメニュー内容↓ {% endcomment %}
-  <div id="sixth" class="area">
-    <table class="table table-bordered table-striped">
-      <tbody>
-        {% for i in F6classrooms %}
-        <tr>
-          <td>{{i}}</td><td>○</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div><!--/area-->
+{% comment %} ↓４階タブメニュー内容↓ {% endcomment %}
+<div id="fourth" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      {% for i in room4 %}
+      <tr>
+        <td>{{ i.room4 }}</td><td>{{ i.room4_tf }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div><!--/area-->
+
+{% comment %} ↓５階タブメニュー内容↓ {% endcomment %}
+<div id="fifth" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      {% for i in room5 %}
+      <tr>
+        <td>{{ i.room5 }}</td><td>{{ i.room5_tf }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div><!--/area-->
+
+{% comment %} ↓６階タブメニュー内容↓ {% endcomment %}
+<div id="sixth" class="area">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      {% for i in room6 %}
+      <tr>
+        <td>{{ i.room6 }}</td><td>{{ i.room6_tf }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div><!--/area-->
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'js/users.js'%}"></script>  

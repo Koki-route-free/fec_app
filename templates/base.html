@@ -39,11 +39,10 @@
           {% comment %} 二つの要素を両端に配置↓ {% endcomment %}
           <div class="d-flex justify-content-between">
             {% comment %} 左上ロゴ↓ {% endcomment %}
-            <div class="logo"><img src="{% static 'img/Vcode_Logo.png'%}" class="img-fluid w-75 mt-2 mb-2"></div>
+            <div class="logo"><img src="{% static 'img/Vcode_Logo.png'%}" width="200" height="40"></div>
             {% comment %} 右上メニューアンケート  {% endcomment %}
-            <div class="pt-1 mr-1 mt-2 mb-2">
-              <a href="/fec_app_folder/users/top_page/"><span class="material-icons">home</span>
-              <a href="/fec_app_folder/users/reviews/"><span class="material-icons">description</span></a>
+            <div class="pt-1 mr-2 mt-2 mb-3">
+              <a href="/fec_app_folder/users/reviews/" class="btn btn-info" role="button">アンケート</a>
             </div>
           </div>
         </div>
@@ -57,7 +56,7 @@
           {% comment %} 二つの要素を両端に配置↓ {% endcomment %}
           <div class="d-flex justify-content-between">
             {% comment %} ロゴ↓ {% endcomment %}
-            <div class="logo"><img src="{% static 'img/Vcode_Logo.png'%}" class="w-25 mt-2 mb-2"></div>
+            <div class="logo"><img src="{% static 'img/Vcode_Logo.png'%}" width="250" height="50"></div>
             {% comment %} 管理者用画面に飛ぶ↓ {% endcomment %}
             <div class="pt-1 mr-2 mt-2 mb-3">
               <a type="button" class="btn btn-danger" href="/fec_app_folder/admins/login/">管理者用画面はこちら</a>
