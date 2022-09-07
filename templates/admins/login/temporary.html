@@ -3,4 +3,46 @@
 {% block contents %}
 <h1>hello world</h1>
 <a href="/fec_app_folder/admins/login/solid/">solid</a>
+<!-- <div class="">
+  <tr class="d-flex justify-content-around">
+    <td></td>
+    <td>施設コード</td>
+    <td>予約開始日時</td>
+    <td>予約終了日時</td>
+    <br>
+  </tr>
+  {% for i in object_list %}
+  <tr class="d-flex justify-content-around">
+    <td>{{ i.room_number }}</td>
+    <td>{{ i.capacity}}</td>
+    <td></td>
+    <br>
+  </tr>
+  {% endfor %}
+</div> -->
+<form method="POST" class="d-flex justify-content-around">
+  {% if form.errors  %}
+  <p>全て入力してください</p>
+  {% endif %}
+  {% csrf_token %}
+  <label>施設コード</label>
+  <div>
+    {{ form.room_number }}
+    {{ form.room_number.errors }}
+  </div>
+  <label>予約開始日時</label>
+  <div>
+    {{ form.time }}
+    {{ form.time.errors }}
+  </div>
+  <!-- <label>予約終了日時</label>
+  <div>
+    {{ form.capacity }}
+    {{ form.capacity.errors }}
+  </div> -->
+  <div>
+    <button type="submit" class="btn btn-secondary text-white ">登録</button>
+  </div>
+</form>
+
 {% endblock %}
