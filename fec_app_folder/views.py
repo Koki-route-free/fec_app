@@ -129,12 +129,12 @@ class Admins_Add_classroom_View(CreateView):
     success_url = reverse_lazy('fec_app_folder:admins/login/solid/')
 
 
-class Admins_Login_View(LoginView):  
+class Admins_Login_View(LoginView):
     form_class = LoginForm
     template_name = 'admins/login.html'
 
 
-class Users_Reviews_View(CreateView):  
+class Users_Reviews_View(CreateView):
     model = AssetDB
     form_class = AssetForm
     template_name = 'users/reviews.html'
