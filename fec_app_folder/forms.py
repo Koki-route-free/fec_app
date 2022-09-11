@@ -36,6 +36,3 @@ class AssetForm(forms.ModelForm):
         model = AssetDB
         fields = ("student_number", "room_number", "time", "use_num", "sound")
 
-
-# class SolidCreateForm(forms.ModelForm):
-    

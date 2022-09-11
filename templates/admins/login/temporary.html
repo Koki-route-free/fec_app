@@ -1,6 +1,113 @@
 {% extends 'admins/admins_base.html' %}
 {% load static %}
 {% block contents %}
-<h1>hello world</h1>
-<a href="/fec_app_folder/admins/login/solid/">solid</a>
+<h4>固定の時間割編集は<a href="/fec_app_folder/admins/login/solid/">こちら</a></h4>
+<form action="{% url 'fec_app_folder:admins/login/temporary/' %}">
+  {% csrf_token %}
+  <table>
+    <tr class="d-flex justify-content-around">
+      <td>施設コード</td>
+      <td>予約開始日時</td>
+      <td>予約終了日時</td>
+      <br>
+    </tr>
+    <tr class="d-flex justify-content-around">
+      <td id="room_id_paste" class="past"><input type="text" value="教室名を貼り付け" onpaste="return false"></td>
+      <td class="past"><input id="start_time_paste" type="paste" value="開始時刻を貼り付け" onpaste="return false"></td>
+      <td class="past"><input id="finish_time_paste" type="paste" value="終了時刻を貼り付け" onpaste="return false"></td>
+    </tr>
+    <tbody>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+      <tr class="d-flex justify-content-around">
+        <td><input type="text" name="room_id" onpaste="return false"></td>
+        <td><input type="text" name="start_time" onpaste="return false"></td>
+        <td><input type="text" name="finish_time" onpaste="return false"></td>
+        <br>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-outline-secondary mt-2" type="submit">送信</button>
+  </div>
+</form>
+<div>
+  {{ result }}
+</div>
 {% endblock %}

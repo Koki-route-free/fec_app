@@ -1,27 +1,49 @@
 {% extends 'admins/admins_base.html' %}
 {% load static %}
 {% block contents %}
-<div class="">
-  <tr class="d-flex justify-content-around">
-    <td>教室名</td>
-    <td>capacity</td>
-    <td>1限</td>
-    <td>2限</td>
-    <td>3限</td>
-    <td>4限</td>
-    <td>5限</td>
-    <td>6限</td>
-    <br>
-  </tr>
-  {% for i in object_list %}
-  <tr class="d-flex justify-content-around">
-    <td>{{ i.room_number }}</td>
-    <td>{{ i.capacity}}</td>
-    <td></td>
-    <br>
-  </tr>
-  {% endfor %}
-</div>
+<form action="{% url 'fec_app_folder:admins/login/solid/' %}">
+  <button type="submit">登録更新する</button>
+  {% csrf_token %}
+  <div>
+    <p>曜日</p>
+    <select name="date" id="">
+      <option value="1">月</option>
+      <option value="2">火</option>
+      <option value="3">水</option>
+      <option value="4">木</option>
+      <option value="5">金</option>
+      <option value="6">土</option>
+    </select>
+  </div>
+  <table>
+    <tr class="d-flex justify-content-around">
+      <td>教室名</td>
+      <td>capacity</td>
+      <td>1限</td>
+      <td>2限</td>
+      <td>3限</td>
+      <td>4限</td>
+      <td>5限</td>
+      <td>6限</td>
+      <br>
+    </tr>
+    <tbody>
+      {% for i in object_list %}
+      <tr class="d-flex justify-content-around">
+          <td>{{ i.room_number }}</td>
+          <td>{{ i.capacity}}人</td>
+          <td><input type="checkbox" name="class_1" value="True"><textarea name="comment_1"></textarea></td>
+          <td><input type="checkbox" name="class_2" value="True"><textarea name="comment_2"></textarea></td>
+          <td><input type="checkbox" name="class_3" value="True"><textarea name="comment_3"></textarea></td>
+          <td><input type="checkbox" name="class_4" value="True"><textarea name="comment_4"></textarea></td>
+          <td><input type="checkbox" name="class_5" value="True"><textarea name="comment_5"></textarea></td>
+          <td><input type="checkbox" name="class_6" value="True"><textarea name="comment_6"></textarea></td>
+          <br>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</form>
 <div>
   <p>教室追加、編集は
   <a href="/fec_app_folder/admins/login/add_classroom/">こちら</a>

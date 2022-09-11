@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load boost %}
 {% load static %}
 {% block extra_css %}
   <link rel="stylesheet" type='text/css' href="{% static 'css/users.css'%}">
@@ -59,9 +60,9 @@
 <div id="second" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
-      {% for i in room2 %}
+      {% for i, j in room2|zip:room2_tf %}
       <tr>
-        <td>{{ i.room2 }}</td><td>{{ i.room2_tf }}</td>
+        <td>{{ i }}</td><td>{{ j }}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -72,9 +73,9 @@
 <div id="third" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
-      {% for i in room3 %}
+      {% for i, j in room3|zip:room3_tf %}
       <tr>
-        <td>{{ i.room3 }}</td><td>{{ i.room3_tf }}</td>
+        <td>{{ i }}</td><td>{{ j }}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -85,9 +86,9 @@
 <div id="fourth" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
-      {% for i in room4 %}
+      {% for i, j in room4|zip:room4_tf %}
       <tr>
-        <td>{{ i.room4 }}</td><td>{{ i.room4_tf }}</td>
+        <td>{{ i }}</td><td>{{ j }}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -98,9 +99,9 @@
 <div id="fifth" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
-      {% for i in room5 %}
+      {% for i, j in room5|zip:room5_tf %}
       <tr>
-        <td>{{ i.room5 }}</td><td>{{ i.room5_tf }}</td>
+        <td>{{ i }}</td><td>{{ j }}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -111,9 +112,9 @@
 <div id="sixth" class="area">
   <table class="table table-bordered table-striped">
     <tbody>
-      {% for i in room6 %}
+      {% for i, j in room6|zip:room6_tf %}
       <tr>
-        <td>{{ i.room6 }}</td><td>{{ i.room6_tf }}</td>
+        <td>{{ i }}</td><td>{{ j }}</td>
       </tr>
       {% endfor %}
     </tbody>
