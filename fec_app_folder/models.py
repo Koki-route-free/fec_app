@@ -114,7 +114,6 @@ class SolidDB(models.Model):
     day_week = models.IntegerField("曜日", choices=weeks, blank=False, null=False, help_text="曜日")
     room_number = models.CharField("教室名", max_length=6, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
-    capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
     comment = models.CharField("コメント", max_length=255, blank=True, null=True, help_text="コメント")
 
     # 投稿1つずつの表紙
@@ -129,7 +128,6 @@ class TemporaryDB(models.Model):
 
     room_number = models.CharField("教室名", max_length=6, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
-    capacity = models.IntegerField("収容人数", blank=False, null=False, help_text="収容人数")
     student_reserved = models.IntegerField("学生予約", blank=False, null=False, default=0, help_text="学生予約(学生予約でないなら0学生予約なら人数)")
     date = models.DateField("日付", blank=False, null=False, help_text="日付")
     
@@ -147,7 +145,6 @@ class AssetDB(models.Model):
     room_number = models.CharField("教室名", max_length=6, blank=False, null=False, help_text="教室名")
     time = models.IntegerField("時間割", choices=times, blank=False, null=False, help_text="時間割")
     date = models.DateField("日付", blank=False, null=False, auto_now=True, help_text="日付")
-    # day_week = models.IntegerField("曜日", choices=weeks, blank=False, null=False, help_text="曜日")
     use_num = models.IntegerField("利用人数", blank=False, null=False, help_text="利用人数")
     sound = models.IntegerField("騒音度", choices=sounds, blank=False, null=False, help_text="騒音度")
     
