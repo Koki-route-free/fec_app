@@ -54,7 +54,6 @@ class Admins_Temporary_View(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
-        # GETは見られてもいいPOSTは見られてはいけないようなデータ
         room_id = self.request.GET.getlist('room_id')
         start_time = self.request.GET.getlist('start_time')
         finish_time = self.request.GET.getlist('finish_time')
