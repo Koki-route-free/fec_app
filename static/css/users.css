@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+/* 注意書きのCSS */
+
+.box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px rgb(52, 194, 207);
+}
+
 /*tabの形状*/
 #tab {
     display: flex;
@@ -74,17 +82,10 @@ a {
     height:32px;
 }
 
-/* 注意書きのCSS */
-
-.box {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    border: double 5px rgb(18,139,20);
-}
-
 option {
     margin-right: 3px;
 }
+
 
 
 
