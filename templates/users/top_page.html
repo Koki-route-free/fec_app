@@ -15,13 +15,13 @@
 
     <div class="pt-2 pr-1" id="calendar">
       {% comment %} ↓日付を選択するプルダウンメニュー↓ {% endcomment %}
-      <input type="date" min="yyyy-MM-dd" max="yyyy-MM-dd" value="yyyy-MM-dd" name="date">
+      <input type="date" min="yyyy-MM-dd" max="yyyy-MM-dd" value="yyyy-MM-dd" name="selectdate">
     </div>  
 
     {% comment %} ↓時限を選択するプルダウンメニュー↓ {% endcomment %}
     <div class="lecturespulldown mr-4">
       <div class="lecturespulldown mr-4">
-        <select class="custom-select " id="lecture" name="time" value="{{ request.GET.time }}">
+        <select class="custom-select " id="lecture" name="time">
           <option value="1">１限</option>
           <option value="2">２限</option>
           <option value="3">３限</option>

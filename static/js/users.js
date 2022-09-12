@@ -9,7 +9,7 @@ var month = ('00' + (nextweek.getMonth()+1)).slice(-2);
 var date = ('00' + nextweek.getDate()).slice(-2);
 var ymd_1 = nextweek.getFullYear()+"-"+ month +"-"+ date;
 
-$('#calendar').html('<input type="date"  min="'+ ymd +'" max="' + ymd_1 + '" value="' + ymd +'">');
+$('#calendar').html('<input type="date"  min="'+ ymd +'" max="' + ymd_1 + '" value="' + ymd +'" name="selectdate">');
 
 var hour = ('00' + today.getHours()).slice(-2);
 var min = ('00' + today.getMinutes()).slice(-2);
