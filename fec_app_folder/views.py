@@ -14,36 +14,57 @@ class Admins_Solid_View(ListView):
     template_name = 'admins/login/solid.html'
     ordering = 'room_number'
     def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
         room_number = RoomDB.objects.values_list('room_number', flat=True)
         capacity = RoomDB.objects.values_list('capacity', flat=True)
-        
+        solid_room_number = SolidDB.objects.values_list('room_number', flat=True)
+        solid_day_week = SolidDB.objects.values_list('day_week', flat=True)
+        solid_time = SolidDB.objects.values_list('time', flat=True)
+        solid_comment = SolidDB.objects.values_list('comment', flat=True)
+
+        comment_list = []
+        for i in range(1,6):
+            for j in range(1,6):
+                comment_num = "comment" + str(i) + str(j)
+                tf_num = "tf" + str(i) + str(j)
+                class_comment_list = []
+                for r in room_number:
+                    if r in solid_room_number:
+                        nums = [k for k, x in enumerate(solid_room_number) if x == r]
+                        for num in nums:
+                            if solid_day_week[num]==i and solid_time[num]==j:
+                                class_comment_list.append({comment_num:solid_comment[num], tf_num:"True"})
+                    else:
+                        list.append({comment_num:"none", tf_num:""})
         date = self.request.GET.get('date')
-        class_1 = self.request.GET.getlist('class_1')
-        class_2 = self.request.GET.getlist('class_2')
-        class_3 = self.request.GET.getlist('class_3')
-        class_4 = self.request.GET.getlist('class_4')
-        class_5 = self.request.GET.getlist('class_5')
-        class_6 = self.request.GET.getlist('class_6')
-        class_num = [class_1, class_2, class_3, class_4, class_5, class_6]
-        comment_1 = self.request.GET.getlist('comment_1')
-        comment_2 = self.request.GET.getlist('comment_2')
-        comment_3 = self.request.GET.getlist('comment_3')
-        comment_4 = self.request.GET.getlist('comment_4')
-        comment_5 = self.request.GET.getlist('comment_5')
-        comment_6 = self.request.GET.getlist('comment_6')
-        comment_num = [comment_1, comment_2, comment_3, comment_4, comment_5, comment_6]
-        for i, (class_tf, comment) in enumerate(zip(class_num, comment_num)):
-            time = i +1
-            for a, c, r in zip(class_tf, comment, room_number):
-                if len(a)>0:
-                    try:
-                        obj = SolidDB.objects.get(room_number=r, time=time, day_week=date)
-                    except SolidDB.DoesNotExist:
-                        obj = SolidDB(room_number=r, time=time, day_week=date, comment=c)
-                        obj.save()
-        context = super().get_context_data(**kwargs)
+        if date:
+            class_1 = self.request.GET.getlist(date+'class_1')
+            class_2 = self.request.GET.getlist(date+'class_2')
+            class_3 = self.request.GET.getlist(date+'class_3')
+            class_4 = self.request.GET.getlist(date+'class_4')
+            class_5 = self.request.GET.getlist(date+'class_5')
+            class_6 = self.request.GET.getlist(date+'class_6')
+            class_num = [class_1, class_2, class_3, class_4, class_5, class_6]
+            comment_1 = self.request.GET.getlist(date+'comment_1')
+            comment_2 = self.request.GET.getlist(date+'comment_2')
+            comment_3 = self.request.GET.getlist(date+'comment_3')
+            comment_4 = self.request.GET.getlist(date+'comment_4')
+            comment_5 = self.request.GET.getlist(date+'comment_5')
+            comment_6 = self.request.GET.getlist(date+'comment_6')
+            comment_num = [comment_1, comment_2, comment_3, comment_4, comment_5, comment_6]
+            for i, (class_tf, comment) in enumerate(zip(class_num, comment_num)):
+                time = i +1
+                for a, c, r in zip(class_tf, comment, room_number):
+                    if len(a)>0:
+                        try:
+                            obj = SolidDB.objects.get(room_number=r, time=time, day_week=date)
+                        except SolidDB.DoesNotExist:
+                            obj = SolidDB(room_number=r, time=time, day_week=date, comment=c)
+                            obj.save()
         context["room_number"] = room_number
         context["capacity"] = capacity
+        context["comment_list"] = comment_list.objects.all()
         context["result"] ="正常に登録されました"
         return context
 
