@@ -1,134 +1,142 @@
 {% extends 'admins/admins_base.html' %}
 {% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" type='text/css' href="{% static 'css/admins.css'%}">
+{% endblock %}
 {% load boost %}
 {% block contents %}
+<h5 class="d-flex justify-content-end m-3 mb-4"><a href="/fec_app_folder/admins/login/temporary/">臨時用教室使用登録に戻る</a></h5>
+<h3 class="d-flex justify-content-center mt-4">固定用時間割編集画面</h2>
 <form action="{% url 'fec_app_folder:admins/login/solid/' %}">
-  <button type="submit">登録更新する</button>
   {% csrf_token %}
   <div>
-    <p>曜日</p>
-    <select name="date" id="">
-      <option value="1">月</option>
-      <option value="2">火</option>
-      <option value="3">水</option>
-      <option value="4">木</option>
-      <option value="5">金</option>
-      <option value="6">土</option>
-    </select>
+    <br>
+    <p class="ml-4">曜日を選択</p>
+    <label class="ml-5 mr-2"><input type="radio" name="date" id="Mon" checked="checked">月</label>
+    <label class="mr-2"><input type="radio" name="date" id="Tue">火</label>
+    <label class="mr-2"><input type="radio" name="date" id="Wed">水</label>
+    <label class="mr-2"><input type="radio" name="date" id="Thu">木</label>
+    <label class="mr-2"><input type="radio" name="date" id="Fri">金</label>
+    <label class="mr-2"><input type="radio" name="date" id="Sat">土</label>
   </div>
-  <table>
-    <tr class="d-flex justify-content-around">
-      <td>教室名</td>
-      <td>capacity</td>
-      <td>1限</td>
-      <td>2限</td>
-      <td>3限</td>
-      <td>4限</td>
-      <td>5限</td>
-      <td>6限</td>
-      <br>
-    </tr>
-    <tbody>
-      <!-- 月曜日 -->
-      {% for i in object_list %}
-      <tr class="d-flex justify-content-around">
-          <td>{{ i.room_number }}</td>
-          <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="1class_1" value="True"><textarea name="1comment_1">{{ i.comment11 }}</textarea></td>
-          <td><input type="checkbox" name="1class_2" value="True"><textarea name="1comment_2">{{ i.comment12 }}</textarea></td>
-          <td><input type="checkbox" name="1class_3" value="True"><textarea name="1comment_3">{{ i.comment13 }}</textarea></td>
-          <td><input type="checkbox" name="1class_4" value="True"><textarea name="1comment_4">{{ i.comment14 }}</textarea></td>
-          <td><input type="checkbox" name="1class_5" value="True"><textarea name="1comment_5">{{ i.comment15 }}</textarea></td>
-          <td><input type="checkbox" name="1class_6" value="True"><textarea name="1comment_6">{{ i.comment16 }}</textarea></td>
-          <br>
+  <br><br>
+  <div class="d-flex justify-content-center">
+    <table>
+      <tr class="d-flex justify-content-around mr-1">
+        <td width="110" class="d-flex justify-content-center h5 border border-dark rounded" id="context">教室名</td>
+        <td width="110" class="d-flex justify-content-center h5 border border-dark rounded" id="context">capacity</td>
+        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">1限</td>
+        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">2限</td>
+        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">3限</td>
+        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">4限</td>
+        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">5限</td>
+        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">6限</td>
       </tr>
-      {% endfor %}
-    </tbody>
-    <tbody>
-      <!-- 火曜日 -->
-      {% for i in object_list %}
-      <tr class="d-flex justify-content-around">
-          <td>{{ i.room_number }}</td>
-          <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="2class_1" value="True"><textarea name="2comment_1"></textarea></td>
-          <td><input type="checkbox" name="2class_2" value="True"><textarea name="2comment_2"></textarea></td>
-          <td><input type="checkbox" name="2class_3" value="True"><textarea name="2comment_3"></textarea></td>
-          <td><input type="checkbox" name="2class_4" value="True"><textarea name="2comment_4"></textarea></td>
-          <td><input type="checkbox" name="2class_5" value="True"><textarea name="2comment_5"></textarea></td>
-          <td><input type="checkbox" name="2class_6" value="True"><textarea name="2comment_6"></textarea></td>
-          <br>
-      </tr>
-      {% endfor %}
-    </tbody>
-    <tbody>
-      <!-- 水曜日 -->
-      {% for i in object_list %}
-      <tr class="d-flex justify-content-around">
-          <td>{{ i.room_number }}</td>
-          <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="3class_1" value="True"><textarea name="3comment_1"></textarea></td>
-          <td><input type="checkbox" name="3class_2" value="True"><textarea name="3comment_2"></textarea></td>
-          <td><input type="checkbox" name="3class_3" value="True"><textarea name="3comment_3"></textarea></td>
-          <td><input type="checkbox" name="3class_4" value="True"><textarea name="3comment_4"></textarea></td>
-          <td><input type="checkbox" name="3class_5" value="True"><textarea name="3comment_5"></textarea></td>
-          <td><input type="checkbox" name="3class_6" value="True"><textarea name="3comment_6"></textarea></td>
-          <br>
-      </tr>
-      {% endfor %}
-    </tbody>
-    <tbody>
-      <!-- 木曜日 -->
-      {% for i in object_list %}
-      <tr class="d-flex justify-content-around">
-          <td>{{ i.room_number }}</td>
-          <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="4class_1" value="True"><textarea name="4comment_1"></textarea></td>
-          <td><input type="checkbox" name="4class_2" value="True"><textarea name="4comment_2"></textarea></td>
-          <td><input type="checkbox" name="4class_3" value="True"><textarea name="4comment_3"></textarea></td>
-          <td><input type="checkbox" name="4class_4" value="True"><textarea name="4comment_4"></textarea></td>
-          <td><input type="checkbox" name="4class_5" value="True"><textarea name="4comment_5"></textarea></td>
-          <td><input type="checkbox" name="4class_6" value="True"><textarea name="4comment_6"></textarea></td>
-          <br>
-      </tr>
-      {% endfor %}
-    </tbody>
-    <tbody>
-      <!-- 金曜日 -->
-      {% for i in object_list %}
-      <tr class="d-flex justify-content-around">
-          <td>{{ i.room_number }}</td>
-          <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="5class_1" value="True"><textarea name="5comment_1"></textarea></td>
-          <td><input type="checkbox" name="5class_2" value="True"><textarea name="5comment_2"></textarea></td>
-          <td><input type="checkbox" name="5class_3" value="True"><textarea name="5comment_3"></textarea></td>
-          <td><input type="checkbox" name="5class_4" value="True"><textarea name="5comment_4"></textarea></td>
-          <td><input type="checkbox" name="5class_5" value="True"><textarea name="5comment_5"></textarea></td>
-          <td><input type="checkbox" name="5class_6" value="True"><textarea name="5comment_6"></textarea></td>
-          <br>
-      </tr>
-      {% endfor %}
-    </tbody>
-    <tbody>
-      <!-- 土曜日 -->
-      {% for i in object_list %}
-      <tr class="d-flex justify-content-around">
-          <td>{{ i.room_number }}</td>
-          <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="6class_1" value="True"><textarea name="6comment_1"></textarea></td>
-          <td><input type="checkbox" name="6class_2" value="True"><textarea name="6comment_2"></textarea></td>
-          <td><input type="checkbox" name="6class_3" value="True"><textarea name="6comment_3"></textarea></td>
-          <td><input type="checkbox" name="6class_4" value="True"><textarea name="6comment_4"></textarea></td>
-          <td><input type="checkbox" name="6class_5" value="True"><textarea name="6comment_5"></textarea></td>
-          <td><input type="checkbox" name="6class_6" value="True"><textarea name="6comment_6"></textarea></td>
-          <br>
-      </tr>
-      {% endfor %}
-    </tbody> 
-  </table>
+      <tbody class="area" id="Monday">
+        <!-- 月曜日 -->
+        {% for i in object_list %}
+        <tr class="d-flex justify-content-around mb-1">
+            <td width="110" height="44" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
+            <td width="110" height="44" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
+            <td><textarea name="1comment_1">{{ i.comment11 }}</textarea></td>
+            <td><textarea name="1comment_2">{{ i.comment12 }}</textarea></td>
+            <td><textarea name="1comment_3">{{ i.comment13 }}</textarea></td>
+            <td><textarea name="1comment_4">{{ i.comment14 }}</textarea></td>
+            <td><textarea name="1comment_5">{{ i.comment15 }}</textarea></td>
+            <td><textarea name="1comment_6">{{ i.comment16 }}</textarea></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tbody class="area" id="Tuesday">
+        <!-- 火曜日 -->
+        {% for i in object_list %}
+        <tr class="d-flex justify-content-around">
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
+            <td><textarea name="2comment_1"></textarea></td>
+            <td><textarea name="2comment_2"></textarea></td>
+            <td><textarea name="2comment_3"></textarea></td>
+            <td><textarea name="2comment_4"></textarea></td>
+            <td><textarea name="2comment_5"></textarea></td>
+            <td><textarea name="2comment_6"></textarea></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tbody class="area" id="Wednesday">
+        <!-- 水曜日 -->
+        {% for i in object_list %}
+          <tr class="d-flex justify-content-around" id="Tue" class="area">
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
+            <td><textarea name="3comment_1"></textarea></td>
+            <td><textarea name="3comment_2"></textarea></td>
+            <td><textarea name="3comment_3"></textarea></td>
+            <td><textarea name="3comment_4"></textarea></td>
+            <td><textarea name="3comment_5"></textarea></td>
+            <td><textarea name="3comment_6"></textarea></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tbody class="area" id="Thursday">
+        <!-- 木曜日 -->
+        <tr class="d-flex justify-content-around">
+        {% for i in object_list %}
+        <tr class="d-flex justify-content-around" id="Thu" class="area">
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
+            <td><textarea name="4comment_1"></textarea></td>
+            <td><textarea name="4comment_2"></textarea></td>
+            <td><textarea name="4comment_3"></textarea></td>
+            <td><textarea name="4comment_4"></textarea></td>
+            <td><textarea name="4comment_5"></textarea></td>
+            <td><textarea name="4comment_6"></textarea></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tbody class="area" id="Friday">
+        <!-- 金曜日 -->
+        {% for i in object_list %}
+          <tr class="d-flex justify-content-around">
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
+            <td><textarea name="5comment_1"></textarea></td>
+            <td><textarea name="5comment_2"></textarea></td>
+            <td><textarea name="5comment_3"></textarea></td>
+            <td><textarea name="5comment_4"></textarea></td>
+            <td><textarea name="5comment_5"></textarea></td>
+            <td><textarea name="5comment_6"></textarea></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tbody class="area" id="Saturday">
+        <!-- 土曜日 -->
+        {% for i in object_list %}
+          <tr class="d-flex justify-content-around">
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
+            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
+            <td><textarea name="6comment_1"></textarea></td>
+            <td><textarea name="6comment_2"></textarea></td>
+            <td><textarea name="6comment_3"></textarea></td>
+            <td><textarea name="6comment_4"></textarea></td>
+            <td><textarea name="6comment_5"></textarea></td>
+            <td><textarea name="6comment_6"></textarea></td>
+          </tr>
+        {% endfor %}
+      </tbody> 
+    </table>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button type="submit">登録更新する</button>
+  </div>
 </form>
+
 <div>
   <p>教室追加、編集は
   <a href="/fec_app_folder/admins/login/add_classroom/">こちら</a>
   </p>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/admins.js'%}"></script> 
+
 {% endblock %}
