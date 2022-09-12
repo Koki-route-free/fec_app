@@ -53,7 +53,7 @@ function GethashID (hashIDName){
     GethashID (idName);//設定したタブの読み込みと
     return false;//aタグを無効にする
   });
-  
+
   
   // 上記の動きをページが読み込まれたらすぐに動かす
   $(window).on('load', function () {
@@ -72,7 +72,7 @@ window.onload = function () {
 
 // window.setTimeout(function(){
 //   document.getElementById( "submit" ).click();
-// }, 1);
+// }, 1);あ
 
 
 
