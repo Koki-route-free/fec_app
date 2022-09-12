@@ -30,96 +30,96 @@
     </tr>
     <tbody>
       <!-- 月曜日 -->
-      {% for i in object_list %}
+      {% for i in comment_lists %}
       <tr class="d-flex justify-content-around">
           <td>{{ i.room_number }}</td>
           <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="1class_1" value="True"><textarea name="1comment_1">{{ i.comment11 }}</textarea></td>
-          <td><input type="checkbox" name="1class_2" value="True"><textarea name="1comment_2">{{ i.comment12 }}</textarea></td>
-          <td><input type="checkbox" name="1class_3" value="True"><textarea name="1comment_3">{{ i.comment13 }}</textarea></td>
-          <td><input type="checkbox" name="1class_4" value="True"><textarea name="1comment_4">{{ i.comment14 }}</textarea></td>
-          <td><input type="checkbox" name="1class_5" value="True"><textarea name="1comment_5">{{ i.comment15 }}</textarea></td>
-          <td><input type="checkbox" name="1class_6" value="True"><textarea name="1comment_6">{{ i.comment16 }}</textarea></td>
+          <td><textarea name="comment_11">{{ i.comment_11 }}</textarea></td>
+          <td><textarea name="comment_12">{{ i.comment_12 }}</textarea></td>
+          <td><textarea name="comment_13">{{ i.comment_13 }}</textarea></td>
+          <td><textarea name="comment_14">{{ i.comment_14 }}</textarea></td>
+          <td><textarea name="comment_15">{{ i.comment_15 }}</textarea></td>
+          <td><textarea name="comment_16">{{ i.comment_16 }}</textarea></td>
           <br>
       </tr>
       {% endfor %}
     </tbody>
     <tbody>
       <!-- 火曜日 -->
-      {% for i in object_list %}
+      {% for i in comment_lists %}
       <tr class="d-flex justify-content-around">
           <td>{{ i.room_number }}</td>
           <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="2class_1" value="True"><textarea name="2comment_1"></textarea></td>
-          <td><input type="checkbox" name="2class_2" value="True"><textarea name="2comment_2"></textarea></td>
-          <td><input type="checkbox" name="2class_3" value="True"><textarea name="2comment_3"></textarea></td>
-          <td><input type="checkbox" name="2class_4" value="True"><textarea name="2comment_4"></textarea></td>
-          <td><input type="checkbox" name="2class_5" value="True"><textarea name="2comment_5"></textarea></td>
-          <td><input type="checkbox" name="2class_6" value="True"><textarea name="2comment_6"></textarea></td>
+          <td><textarea name="comment_21">{{ i.comment_21 }}</textarea></td>
+          <td><textarea name="comment_22">{{ i.comment_22 }}</textarea></td>
+          <td><textarea name="comment_23">{{ i.comment_23 }}</textarea></td>
+          <td><textarea name="comment_24">{{ i.comment_24 }}</textarea></td>
+          <td><textarea name="comment_25">{{ i.comment_25 }}</textarea></td>
+          <td><textarea name="comment_26">{{ i.comment_26 }}</textarea></td>
           <br>
       </tr>
       {% endfor %}
     </tbody>
     <tbody>
       <!-- 水曜日 -->
-      {% for i in object_list %}
+      {% for i in comment_lists %}
       <tr class="d-flex justify-content-around">
           <td>{{ i.room_number }}</td>
           <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="3class_1" value="True"><textarea name="3comment_1"></textarea></td>
-          <td><input type="checkbox" name="3class_2" value="True"><textarea name="3comment_2"></textarea></td>
-          <td><input type="checkbox" name="3class_3" value="True"><textarea name="3comment_3"></textarea></td>
-          <td><input type="checkbox" name="3class_4" value="True"><textarea name="3comment_4"></textarea></td>
-          <td><input type="checkbox" name="3class_5" value="True"><textarea name="3comment_5"></textarea></td>
-          <td><input type="checkbox" name="3class_6" value="True"><textarea name="3comment_6"></textarea></td>
+          <td><textarea name="comment_31">{{ i.comment_31 }}</textarea></td>
+          <td><textarea name="comment_32">{{ i.comment_32 }}</textarea></td>
+          <td><textarea name="comment_33">{{ i.comment_33 }}</textarea></td>
+          <td><textarea name="comment_34">{{ i.comment_34 }}</textarea></td>
+          <td><textarea name="comment_35">{{ i.comment_35 }}</textarea></td>
+          <td><textarea name="comment_36">{{ i.comment_36 }}</textarea></td>
           <br>
       </tr>
       {% endfor %}
     </tbody>
     <tbody>
       <!-- 木曜日 -->
-      {% for i in object_list %}
+      {% for i in comment_lists %}
       <tr class="d-flex justify-content-around">
           <td>{{ i.room_number }}</td>
           <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="4class_1" value="True"><textarea name="4comment_1"></textarea></td>
-          <td><input type="checkbox" name="4class_2" value="True"><textarea name="4comment_2"></textarea></td>
-          <td><input type="checkbox" name="4class_3" value="True"><textarea name="4comment_3"></textarea></td>
-          <td><input type="checkbox" name="4class_4" value="True"><textarea name="4comment_4"></textarea></td>
-          <td><input type="checkbox" name="4class_5" value="True"><textarea name="4comment_5"></textarea></td>
-          <td><input type="checkbox" name="4class_6" value="True"><textarea name="4comment_6"></textarea></td>
+          <td><textarea name="comment_41">{{ i.comment_41 }}</textarea></td>
+          <td><textarea name="comment_42">{{ i.comment_42 }}</textarea></td>
+          <td><textarea name="comment_43">{{ i.comment_43 }}</textarea></td>
+          <td><textarea name="comment_44">{{ i.comment_44 }}</textarea></td>
+          <td><textarea name="comment_45">{{ i.comment_45 }}</textarea></td>
+          <td><textarea name="comment_46">{{ i.comment_46 }}</textarea></td>
           <br>
       </tr>
       {% endfor %}
     </tbody>
     <tbody>
       <!-- 金曜日 -->
-      {% for i in object_list %}
+      {% for i in comment_lists %}
       <tr class="d-flex justify-content-around">
           <td>{{ i.room_number }}</td>
           <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="5class_1" value="True"><textarea name="5comment_1"></textarea></td>
-          <td><input type="checkbox" name="5class_2" value="True"><textarea name="5comment_2"></textarea></td>
-          <td><input type="checkbox" name="5class_3" value="True"><textarea name="5comment_3"></textarea></td>
-          <td><input type="checkbox" name="5class_4" value="True"><textarea name="5comment_4"></textarea></td>
-          <td><input type="checkbox" name="5class_5" value="True"><textarea name="5comment_5"></textarea></td>
-          <td><input type="checkbox" name="5class_6" value="True"><textarea name="5comment_6"></textarea></td>
+          <td><textarea name="comment_51">{{ i.comment_51 }}</textarea></td>
+          <td><textarea name="comment_52">{{ i.comment_52 }}</textarea></td>
+          <td><textarea name="comment_53">{{ i.comment_53 }}</textarea></td>
+          <td><textarea name="comment_54">{{ i.comment_54 }}</textarea></td>
+          <td><textarea name="comment_55">{{ i.comment_55 }}</textarea></td>
+          <td><textarea name="comment_56">{{ i.comment_56 }}</textarea></td>
           <br>
       </tr>
       {% endfor %}
     </tbody>
     <tbody>
       <!-- 土曜日 -->
-      {% for i in object_list %}
+      {% for i in comment_lists %}
       <tr class="d-flex justify-content-around">
           <td>{{ i.room_number }}</td>
           <td>{{ i.capacity}}人</td>
-          <td><input type="checkbox" name="6class_1" value="True"><textarea name="6comment_1"></textarea></td>
-          <td><input type="checkbox" name="6class_2" value="True"><textarea name="6comment_2"></textarea></td>
-          <td><input type="checkbox" name="6class_3" value="True"><textarea name="6comment_3"></textarea></td>
-          <td><input type="checkbox" name="6class_4" value="True"><textarea name="6comment_4"></textarea></td>
-          <td><input type="checkbox" name="6class_5" value="True"><textarea name="6comment_5"></textarea></td>
-          <td><input type="checkbox" name="6class_6" value="True"><textarea name="6comment_6"></textarea></td>
+          <td><textarea name="comment_61">{{ i.comment_61 }}</textarea></td>
+          <td><textarea name="comment_62">{{ i.comment_62 }}</textarea></td>
+          <td><textarea name="comment_63">{{ i.comment_63 }}</textarea></td>
+          <td><textarea name="comment_64">{{ i.comment_64 }}</textarea></td>
+          <td><textarea name="comment_65">{{ i.comment_65 }}</textarea></td>
+          <td><textarea name="comment_66">{{ i.comment_66 }}</textarea></td>
           <br>
       </tr>
       {% endfor %}
