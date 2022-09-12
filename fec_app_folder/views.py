@@ -23,20 +23,20 @@ class Admins_Solid_View(ListView):
         solid_time = SolidDB.objects.values_list('time', flat=True)
         solid_comment = SolidDB.objects.values_list('comment', flat=True)
 
-        comment_list = []
-        for i in range(1,6):
-            for j in range(1,6):
-                comment_num = "comment" + str(i) + str(j)
-                tf_num = "tf" + str(i) + str(j)
-                class_comment_list = []
-                for r in room_number:
-                    if r in solid_room_number:
-                        nums = [k for k, x in enumerate(solid_room_number) if x == r]
-                        for num in nums:
-                            if solid_day_week[num]==i and solid_time[num]==j:
-                                class_comment_list.append({comment_num:solid_comment[num], tf_num:"True"})
-                    else:
-                        list.append({comment_num:"none", tf_num:""})
+        # comment_list = []
+        # for i in range(1,6):
+        #     for j in range(1,6):
+        #         comment_num = "comment" + str(i) + str(j)
+        #         tf_num = "tf" + str(i) + str(j)
+        #         class_comment_list = []
+        #         for r in room_number:
+        #             if r in solid_room_number:
+        #                 nums = [k for k, x in enumerate(solid_room_number) if x == r]
+        #                 for num in nums:
+        #                     if solid_day_week[num]==i and solid_time[num]==j:
+        #                         class_comment_list.append({comment_num:solid_comment[num], tf_num:"True"})
+        #             else:
+        #                 list.append({comment_num:"none", tf_num:""})
         date = self.request.GET.get('date')
         if date:
             class_1 = self.request.GET.getlist(date+'class_1')
@@ -64,7 +64,7 @@ class Admins_Solid_View(ListView):
                             obj.save()
         context["room_number"] = room_number
         context["capacity"] = capacity
-        context["comment_list"] = comment_list.objects.all()
+        # context["comment_list"] = comment_list.objects.all()
         context["result"] ="正常に登録されました"
         return context
 
