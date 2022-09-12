@@ -9,7 +9,7 @@ var month = ('00' + (nextweek.getMonth()+1)).slice(-2);
 var date = ('00' + nextweek.getDate()).slice(-2);
 var ymd_1 = nextweek.getFullYear()+"-"+ month +"-"+ date;
 
-$('#calendar').html('<input type="date"  min="'+ ymd +'" max="' + ymd_1 + '" name="date">');
+$('#calendar').html('<input type="date"  min="'+ ymd +'" max="' + ymd_1 + '" value="' + ymd +'">');
 
 var hour = ('00' + today.getHours()).slice(-2);
 var min = ('00' + today.getMinutes()).slice(-2);
@@ -62,6 +62,17 @@ function GethashID (hashIDName){
     var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
     GethashID (hashName);//設定したタブの読み込み
   });
+
+// ページ読み込まれたらクリック
+window.onload = function () {
+  document.getElementById( "default" ).click();
+}
+
+
+
+// window.setTimeout(function(){
+//   document.getElementById( "submit" ).click();
+// }, 1);
 
 
 
