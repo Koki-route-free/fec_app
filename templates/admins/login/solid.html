@@ -1,142 +1,136 @@
 {% extends 'admins/admins_base.html' %}
 {% load static %}
-{% block extra_css %}
-  <link rel="stylesheet" type='text/css' href="{% static 'css/admins.css'%}">
-{% endblock %}
 {% load boost %}
 {% block contents %}
-<h5 class="d-flex justify-content-end m-3 mb-4"><a href="/fec_app_folder/admins/login/temporary/">臨時用教室使用登録に戻る</a></h5>
-<h3 class="d-flex justify-content-center mt-4">固定用時間割編集画面</h2>
 <form action="{% url 'fec_app_folder:admins/login/solid/' %}">
+  <button type="submit">登録更新する</button>
   {% csrf_token %}
   <div>
-    <br>
-    <p class="ml-4">曜日を選択</p>
-    <label class="ml-5 mr-2"><input type="radio" name="date" id="Mon" checked="checked">月</label>
-    <label class="mr-2"><input type="radio" name="date" id="Tue">火</label>
-    <label class="mr-2"><input type="radio" name="date" id="Wed">水</label>
-    <label class="mr-2"><input type="radio" name="date" id="Thu">木</label>
-    <label class="mr-2"><input type="radio" name="date" id="Fri">金</label>
-    <label class="mr-2"><input type="radio" name="date" id="Sat">土</label>
+    <p>曜日</p>
+    <select name="date" id="">
+      <option value="1">月</option>
+      <option value="2">火</option>
+      <option value="3">水</option>
+      <option value="4">木</option>
+      <option value="5">金</option>
+      <option value="6">土</option>
+    </select>
   </div>
-  <br><br>
-  <div class="d-flex justify-content-center">
-    <table>
-      <tr class="d-flex justify-content-around mr-1">
-        <td width="110" class="d-flex justify-content-center h5 border border-dark rounded" id="context">教室名</td>
-        <td width="110" class="d-flex justify-content-center h5 border border-dark rounded" id="context">capacity</td>
-        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">1限</td>
-        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">2限</td>
-        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">3限</td>
-        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">4限</td>
-        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">5限</td>
-        <td width="192" class="d-flex justify-content-center h5 border border-dark rounded" id="context">6限</td>
+  <table class="">
+    <tr class="d-flex justify-content-around">
+      <td>教室名</td>
+      <td>capacity</td>
+      <td>1限</td>
+      <td>2限</td>
+      <td>3限</td>
+      <td>4限</td>
+      <td>5限</td>
+      <td>6限</td>
+      <br>
+    </tr>
+    <tbody>
+      {% for i in test %}
+      <p>{{i}}</p>
+      {% endfor %}
+      <!-- 月曜日 -->
+      {% for i in comment_lists %}
+        <tr class="d-flex justify-content-around">
+            <td>{{ i.room_number }}</td>
+            <td>{{ i.capacity}}人</td>
+            <td><textarea name="comment_11">{{ i.comment_11 }}</textarea></td>
+            <td><textarea name="comment_12">{{ i.comment_12 }}</textarea></td>
+            <td><textarea name="comment_13">{{ i.comment_13 }}</textarea></td>
+            <td><textarea name="comment_14">{{ i.comment_14 }}</textarea></td>
+            <td><textarea name="comment_15">{{ i.comment_15 }}</textarea></td>
+            <td><textarea name="comment_16">{{ i.comment_16 }}</textarea></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <tbody>
+      <!-- 火曜日 -->
+      {% for i in comment_lists %}
+      <tr class="d-flex justify-content-around">
+          <td>{{ i.room_number }}</td>
+          <td>{{ i.capacity}}人</td>
+          <td><textarea name="comment_21">{{ i.comment_21 }}</textarea></td>
+          <td><textarea name="comment_22">{{ i.comment_22 }}</textarea></td>
+          <td><textarea name="comment_23">{{ i.comment_23 }}</textarea></td>
+          <td><textarea name="comment_24">{{ i.comment_24 }}</textarea></td>
+          <td><textarea name="comment_25">{{ i.comment_25 }}</textarea></td>
+          <td><textarea name="comment_26">{{ i.comment_26 }}</textarea></td>
+          <br>
       </tr>
-      <tbody class="area" id="Monday">
-        <!-- 月曜日 -->
-        {% for i in comment_lists %}
-        <tr class="d-flex justify-content-around mb-1">
-            <td width="110" height="44" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
-            <td width="110" height="44" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
-            <td><textarea name="1comment_1">{{ i.comment11 }}</textarea></td>
-            <td><textarea name="1comment_2">{{ i.comment12 }}</textarea></td>
-            <td><textarea name="1comment_3">{{ i.comment13 }}</textarea></td>
-            <td><textarea name="1comment_4">{{ i.comment14 }}</textarea></td>
-            <td><textarea name="1comment_5">{{ i.comment15 }}</textarea></td>
-            <td><textarea name="1comment_6">{{ i.comment16 }}</textarea></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-      <tbody class="area" id="Tuesday">
-        <!-- 火曜日 -->
-        {% for i in comment_lists %}
-        <tr class="d-flex justify-content-around">
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
-            <td><textarea name="comment_21"></textarea></td>
-            <td><textarea name="comment_22"></textarea></td>
-            <td><textarea name="comment_23"></textarea></td>
-            <td><textarea name="comment_24"></textarea></td>
-            <td><textarea name="comment_25"></textarea></td>
-            <td><textarea name="comment_26"></textarea></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-      <tbody class="area" id="Wednesday">
-        <!-- 水曜日 -->
-        {% for i in comment_lists %}
-          <tr class="d-flex justify-content-around" id="Tue" class="area">
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
-            <td><textarea name="comment_31"></textarea></td>
-            <td><textarea name="comment_32"></textarea></td>
-            <td><textarea name="comment_33"></textarea></td>
-            <td><textarea name="comment_34"></textarea></td>
-            <td><textarea name="comment_35"></textarea></td>
-            <td><textarea name="comment_36"></textarea></td>
-          </tr>
-        {% endfor %}
-      </tbody>
-      <tbody class="area" id="Thursday">
-        <!-- 木曜日 -->
-        <tr class="d-flex justify-content-around">
-        {% for i in comment_lists %}
-        <tr class="d-flex justify-content-around" id="Thu" class="area">
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
-            <td><textarea name="comment_41"></textarea></td>
-            <td><textarea name="comment_42"></textarea></td>
-            <td><textarea name="comment_43"></textarea></td>
-            <td><textarea name="comment_44"></textarea></td>
-            <td><textarea name="comment_45"></textarea></td>
-            <td><textarea name="comment_46"></textarea></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-      <tbody class="area" id="Friday">
-        <!-- 金曜日 -->
-        {% for i in comment_lists %}
-          <tr class="d-flex justify-content-around">
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
-            <td><textarea name="comment_51"></textarea></td>
-            <td><textarea name="comment_52"></textarea></td>
-            <td><textarea name="comment_53"></textarea></td>
-            <td><textarea name="comment_54"></textarea></td>
-            <td><textarea name="comment_55"></textarea></td>
-            <td><textarea name="comment_56"></textarea></td>
-          </tr>
-        {% endfor %}
-      </tbody>
-      <tbody class="area" id="Saturday">
-        <!-- 土曜日 -->
-        {% for i in comment_lists %}
-          <tr class="d-flex justify-content-around">
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.room_number }}</td>
-            <td width="110" class="d-flex justify-content-center mr-1 border border-dark rounded">{{ i.capacity}}人</td>
-            <td><textarea name="comment_61"></textarea></td>
-            <td><textarea name="comment_62"></textarea></td>
-            <td><textarea name="comment_63"></textarea></td>
-            <td><textarea name="comment_64"></textarea></td>
-            <td><textarea name="comment_65"></textarea></td>
-            <td><textarea name="comment_66"></textarea></td>
-          </tr>
-        {% endfor %}
-      </tbody> 
-    </table>
-  </div>
-  <div class="d-flex justify-content-center">
-    <button type="submit">登録更新する</button>
-  </div>
+      {% endfor %}
+    </tbody>
+    <tbody>
+      <!-- 水曜日 -->
+      {% for i in comment_lists %}
+      <tr class="d-flex justify-content-around">
+          <td>{{ i.room_number }}</td>
+          <td>{{ i.capacity}}人</td>
+          <td><textarea name="comment_31">{{ i.comment_31 }}</textarea></td>
+          <td><textarea name="comment_32">{{ i.comment_32 }}</textarea></td>
+          <td><textarea name="comment_33">{{ i.comment_33 }}</textarea></td>
+          <td><textarea name="comment_34">{{ i.comment_34 }}</textarea></td>
+          <td><textarea name="comment_35">{{ i.comment_35 }}</textarea></td>
+          <td><textarea name="comment_36">{{ i.comment_36 }}</textarea></td>
+          <br>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tbody>
+      <!-- 木曜日 -->
+      {% for i in comment_lists %}
+      <tr class="d-flex justify-content-around">
+          <td>{{ i.room_number }}</td>
+          <td>{{ i.capacity}}人</td>
+          <td><textarea name="comment_41">{{ i.comment_41 }}</textarea></td>
+          <td><textarea name="comment_42">{{ i.comment_42 }}</textarea></td>
+          <td><textarea name="comment_43">{{ i.comment_43 }}</textarea></td>
+          <td><textarea name="comment_44">{{ i.comment_44 }}</textarea></td>
+          <td><textarea name="comment_45">{{ i.comment_45 }}</textarea></td>
+          <td><textarea name="comment_46">{{ i.comment_46 }}</textarea></td>
+          <br>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tbody>
+      <!-- 金曜日 -->
+      {% for i in comment_lists %}
+      <tr class="d-flex justify-content-around">
+          <td>{{ i.room_number }}</td>
+          <td>{{ i.capacity}}人</td>
+          <td><textarea name="comment_51">{{ i.comment_51 }}</textarea></td>
+          <td><textarea name="comment_52">{{ i.comment_52 }}</textarea></td>
+          <td><textarea name="comment_53">{{ i.comment_53 }}</textarea></td>
+          <td><textarea name="comment_54">{{ i.comment_54 }}</textarea></td>
+          <td><textarea name="comment_55">{{ i.comment_55 }}</textarea></td>
+          <td><textarea name="comment_56">{{ i.comment_56 }}</textarea></td>
+          <br>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tbody>
+      <!-- 土曜日 -->
+      {% for i in comment_lists %}
+      <tr class="d-flex justify-content-around">
+          <td>{{ i.room_number }}</td>
+          <td>{{ i.capacity}}人</td>
+          <td><textarea name="comment_61">{{ i.comment_61 }}</textarea></td>
+          <td><textarea name="comment_62">{{ i.comment_62 }}</textarea></td>
+          <td><textarea name="comment_63">{{ i.comment_63 }}</textarea></td>
+          <td><textarea name="comment_64">{{ i.comment_64 }}</textarea></td>
+          <td><textarea name="comment_65">{{ i.comment_65 }}</textarea></td>
+          <td><textarea name="comment_66">{{ i.comment_66 }}</textarea></td>
+          <br>
+      </tr>
+      {% endfor %}
+    </tbody> 
+  </table>
 </form>
-
 <div>
   <p>教室追加、編集は
   <a href="/fec_app_folder/admins/login/add_classroom/">こちら</a>
   </p>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="{% static 'js/admins.js'%}"></script> 
-
 {% endblock %}

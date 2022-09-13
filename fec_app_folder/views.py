@@ -12,6 +12,7 @@ from .models import RoomDB, UserDB, SolidDB, TemporaryDB, AssetDB
 class Admins_Solid_View(TemplateView):  
     template_name = 'admins/login/solid.html'
     def get_context_data(self, **kwargs):
+        
         context = super().get_context_data(**kwargs)
         
         room_number = RoomDB.objects.order_by("room_number").values_list('room_number', flat=True)
@@ -22,7 +23,6 @@ class Admins_Solid_View(TemplateView):
         solid_comment = SolidDB.objects.values_list('comment', flat=True)
 
         date = self.request.GET.get('date')
-        test = []
         if date:
             comment_1 = self.request.GET.getlist('comment_'+date+"1")
             comment_2 = self.request.GET.getlist('comment_'+date+"2")
@@ -55,11 +55,15 @@ class Admins_Solid_View(TemplateView):
                 for r in room_number:
                     if r in solid_room_number:
                         nums = [k for k, x in enumerate(solid_room_number) if x == r]
+                        tf = []
                         for num in nums:
                             if solid_day_week[num]==i and solid_time[num]==j:
                                 class_comment_list.append({comment_number:solid_comment[num]})
+                                tf.append(1)
                             else:
-                                class_comment_list.append({comment_number:""})
+                                tf.append(0)
+                        if not 1 in tf:
+                            class_comment_list.append({comment_number:""})
                     else:
                         class_comment_list.append({comment_number:""})
                 if j==1:
@@ -75,10 +79,8 @@ class Admins_Solid_View(TemplateView):
         for k, (l, m) in enumerate(zip(room_number, capacity)):
             a = {"room_number":l, "capacity":m}
             comment_lists[k].update(a)
-        # comment_lists = sorted(comment_lists, key=lambda x:x["room_number"])
         context["comment_lists"] = comment_lists
         context["result"] = "正常に登録されました"
-        context["test"] = test
         return context
 
 
