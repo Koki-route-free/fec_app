@@ -21,7 +21,10 @@ class Admins_Solid_View(TemplateView):
         solid_day_week = SolidDB.objects.values_list('day_week', flat=True)
         solid_time = SolidDB.objects.values_list('time', flat=True)
         solid_comment = SolidDB.objects.values_list('comment', flat=True)
+<<<<<<< HEAD
         
+=======
+>>>>>>> 2a361a3f3d94231c821e07d2b47d6d681091a514
         date = self.request.GET.get('date')
         if date:
             comment_1 = self.request.GET.getlist('comment_'+date+"1")
