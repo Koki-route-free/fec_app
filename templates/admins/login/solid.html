@@ -16,7 +16,7 @@
       <option value="6">土</option>
     </select>
   </div>
-  <table>
+  <table class="">
     <tr class="d-flex justify-content-around">
       <td>教室名</td>
       <td>capacity</td>
@@ -29,19 +29,21 @@
       <br>
     </tr>
     <tbody>
+      {% for i in test %}
+      <p>{{i}}</p>
+      {% endfor %}
       <!-- 月曜日 -->
       {% for i in comment_lists %}
-      <tr class="d-flex justify-content-around">
-          <td>{{ i.room_number }}</td>
-          <td>{{ i.capacity}}人</td>
-          <td><textarea name="comment_11">{{ i.comment_11 }}</textarea></td>
-          <td><textarea name="comment_12">{{ i.comment_12 }}</textarea></td>
-          <td><textarea name="comment_13">{{ i.comment_13 }}</textarea></td>
-          <td><textarea name="comment_14">{{ i.comment_14 }}</textarea></td>
-          <td><textarea name="comment_15">{{ i.comment_15 }}</textarea></td>
-          <td><textarea name="comment_16">{{ i.comment_16 }}</textarea></td>
-          <br>
-      </tr>
+        <tr class="d-flex justify-content-around">
+            <td>{{ i.room_number }}</td>
+            <td>{{ i.capacity}}人</td>
+            <td><textarea name="comment_11">{{ i.comment_11 }}</textarea></td>
+            <td><textarea name="comment_12">{{ i.comment_12 }}</textarea></td>
+            <td><textarea name="comment_13">{{ i.comment_13 }}</textarea></td>
+            <td><textarea name="comment_14">{{ i.comment_14 }}</textarea></td>
+            <td><textarea name="comment_15">{{ i.comment_15 }}</textarea></td>
+            <td><textarea name="comment_16">{{ i.comment_16 }}</textarea></td>
+        </tr>
       {% endfor %}
     </tbody>
     <tbody>

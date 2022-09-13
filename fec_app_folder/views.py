@@ -21,10 +21,7 @@ class Admins_Solid_View(TemplateView):
         solid_day_week = SolidDB.objects.values_list('day_week', flat=True)
         solid_time = SolidDB.objects.values_list('time', flat=True)
         solid_comment = SolidDB.objects.values_list('comment', flat=True)
-<<<<<<< HEAD
-        
-=======
->>>>>>> 2a361a3f3d94231c821e07d2b47d6d681091a514
+
         date = self.request.GET.get('date')
         if date:
             comment_1 = self.request.GET.getlist('comment_'+date+"1")
@@ -58,11 +55,15 @@ class Admins_Solid_View(TemplateView):
                 for r in room_number:
                     if r in solid_room_number:
                         nums = [k for k, x in enumerate(solid_room_number) if x == r]
+                        tf = []
                         for num in nums:
                             if solid_day_week[num]==i and solid_time[num]==j:
                                 class_comment_list.append({comment_number:solid_comment[num]})
+                                tf.append(1)
                             else:
-                                class_comment_list.append({comment_number:""})
+                                tf.append(0)
+                        if not 1 in tf:
+                            class_comment_list.append({comment_number:""})
                     else:
                         class_comment_list.append({comment_number:""})
                 if j==1:
