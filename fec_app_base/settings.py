@@ -11,21 +11,25 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
 import os
-from . import Key
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = Key.SECRET_KEY
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]
 
@@ -86,10 +90,10 @@ WSGI_APPLICATION = 'fec_app_base.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': Key.DATABASES_NAME,
-        'USER': Key.DATABASES_USER,
-        'PASSWORD': Key.DATABASES_PASSWORD,
-        'HOST': Key.DATABASES_HOST,
+        'NAME': env('DATABASES_NAME'),
+        'USER': env('DATABASES_USER'),
+        'PASSWORD': env('DATABASES_PASSWORD'),
+        'HOST': env('DATABASES_HOST'),
         'PORT': 5432,
     }
 }
