@@ -1,11 +1,9 @@
 from datetime import datetime
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from .forms import LoginForm, ClassCreateForm, AssetForm
 from django.views.generic import CreateView, ListView, TemplateView
 from django.db.models import Q
-from django.contrib.auth import login, authenticate
 from .models import RoomDB, UserDB, SolidDB, TemporaryDB, AssetDB
 
 
@@ -176,10 +174,8 @@ class Users_Reviews_View(CreateView):
     success_url = reverse_lazy('fec_app_folder:users/top_page/')
 
 
-class Users_Top_page_View(ListView):
+class Users_Top_page_View(TemplateView):
     template_name = 'users/top_page.html'
-    model = RoomDB
-    
     def get_context_data(self, **kwargs):
         all_room = RoomDB.objects.values_list('room_number', flat=True)
         solid_room = SolidDB.objects
@@ -225,39 +221,39 @@ class Users_Top_page_View(ListView):
         room5_tf = []
         room6 = []
         room6_tf = []
-        
+        # 配列として認識するため（テスト時のエラー回避）
         if len(all_room)>2:
-            for i in all_room:
-                if "F6" in i:
-                    room6.append(i)
-                    if i in use_room:
-                        room6_tf.append("  ×")
-                    else:
-                        room6_tf.append(" ◯")
-                elif "F5" in i:
-                    room5.append(i)
-                    if i in use_room:
-                        room5_tf.append("  ×")
-                    else:
-                        room5_tf.append(" ◯")
-                elif "F4" in i:
-                    room4.append(i)
-                    if i in use_room:
-                        room4_tf.append("  ×")
-                    else:
-                        room4_tf.append(" ◯")
-                elif ("F3" in i) or ("H" in i):
-                    room3.append(i)
-                    if i in use_room:
-                        room3_tf.append("  ×")
-                    else:
-                        room3_tf.append(" ◯")
+          for i in all_room:
+            if "F6" in i:
+                room6.append(i)
+                if i in use_room:
+                    room6_tf.append("  ×")
                 else:
-                    room2.append(i)
-                    if i in use_room:
-                        room2_tf.append("  ×")
-                    else:
-                        room2_tf.append(" ◯")
+                    room6_tf.append(" ◯")
+            elif "F5" in i:
+                room5.append(i)
+                if i in use_room:
+                    room5_tf.append("  ×")
+                else:
+                    room5_tf.append(" ◯")
+            elif "F4" in i:
+                room4.append(i)
+                if i in use_room:
+                    room4_tf.append("  ×")
+                else:
+                    room4_tf.append(" ◯")
+            elif ("F3" in i) or ("H" in i):
+                room3.append(i)
+                if i in use_room:
+                    room3_tf.append("  ×")
+                else:
+                    room3_tf.append(" ◯")
+            else:
+                room2.append(i)
+                if i in use_room:
+                    room2_tf.append("  ×")
+                else:
+                    room2_tf.append(" ◯")
         result = super().get_context_data()
         result["room2"] = room2
         result["room2_tf"] = room2_tf
