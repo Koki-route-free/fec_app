@@ -4,3 +4,7 @@ dj-database-url
 django-bootstrap4
 django_boost
 Pillow
+
+# デプロイ時
+# gunicorn
+# psycopg2
