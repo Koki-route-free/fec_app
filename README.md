@@ -1,5 +1,5 @@
 Python 3.10.6
-psql (PostgreSQL) 14.5 (Ubuntu 14.5-0ubuntu0.22.04.1)
+psql (PostgreSQL) 11.16
 nginx version: nginx/1.18.0 (Ubuntu)
 django 4.0~4.1
 bootstrap -v 4
