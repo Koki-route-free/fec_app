@@ -71,14 +71,7 @@ WSGI_APPLICATION = 'fec_app_base.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE':env('DATABASES_ENGINE'),
-        'NAME':env('DATABASES_NAME'),
-        'USER':env('DATABASES_USER'),
-        'PASSWORD':env('DATABASES_PASSWORD'),
-        'HOST':env('DATABASES_HOST'),
-        'PORT':env('DATABASES_PORT'),
-    }
+    'default': env.db(),
 }
 
 
