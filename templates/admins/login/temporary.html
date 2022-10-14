@@ -6,6 +6,9 @@
 {% block contents %}
 <h5 class="d-flex justify-content-end m-3 mb-4">固定の時間割編集は<a href="/fec_app_folder/admins/login/solid/">こちら</a></h5>
 <h3 class="d-flex justify-content-center m-4">教室使用登録（臨時用）</h3>
+<div class="d-flex justify-content-center m-4 text-danger font-weight-bold">
+  <p>{{ result }}</p>
+</div>
 
 
 <form action="{% url 'fec_app_folder:admins/login/temporary/' %}">
@@ -160,17 +163,5 @@
   </div>
 </form>
 
-<div>
-  <p>{{ result }}</p>
-</div>
-
-{% comment %} <div id="popup-wrapper">
-  <div id="popup-inside">
-    <div id="close">x</div>
-      <div id="message">
-      <h2> {{ result }}</h2>
-    </div>
-  </div>
-</div> {% endcomment %}
 <script type="text/javascript" src="{% static 'js/admins.js'%}"></script>
 {% endblock %}

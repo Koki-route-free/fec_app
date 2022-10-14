@@ -92,65 +92,66 @@ class Admins_Temporary_View(TemplateView):
         start_time = self.request.GET.getlist('start_time')
         finish_time = self.request.GET.getlist('finish_time')
         
-        if len(room_id)==len(start_time) and len(room_id)==len(finish_time) and len(room_id)>0:
-            for i, j, k in zip(room_id, start_time, finish_time):
-                if len(i)<1:
-                    break;
-                if (i[-4]=="F") or (i[-4]=="H"):
-                    room_number = i[-4:]
-                else:
-                    room_number = i[-6:]
+        for i, j, k in zip(room_id, start_time, finish_time):
+            if len(i)<1:
+                break;
+            if (i[-4]=="F") or (i[-4]=="H"):
+                room_number = i[-4:]
+            else:
+                room_number = i[-6:]
+            try:
                 str_date = j.split()[0]
                 date = str_date.replace('/', '-')
                 start = j.split()[1]
                 finish = k.split()[1]
-                if start=="9:00":
-                    start_num = 1
-                elif start=="10:50":
-                    start_num = 2
-                elif start=="13:20":
-                    start_num = 3
-                elif start=="15:10":
-                    start_num = 4
-                elif start=="17:00":
-                    start_num = 5
-                elif start=="18:50":
-                    start_num = 6
+            except:
+                context['result'] = "⚠︎入力がされていないカラムがありました"
+                return context
+            if start=="9:00":
+                start_num = 1
+            elif start=="10:50":
+                start_num = 2
+            elif start=="13:20":
+                start_num = 3
+            elif start=="15:10":
+                start_num = 4
+            elif start=="17:00":
+                start_num = 5
+            elif start=="18:50":
+                start_num = 6
 
-                if finish=="10:40":
-                        finish_num = 1
-                elif finish=="12:30":
-                    finish_num = 2
-                elif finish=="15:00":
-                    finish_num = 3
-                elif finish=="16:50":
-                    finish_num = 4
-                elif finish=="18:40":
-                    finish_num = 5
-                elif finish=="20:30":
-                    finish_num = 6
-                sum = finish_num - start_num
-                if sum==0:
-                    time = [start_num]
-                elif sum==1:
-                    time = [start_num, finish_num]
-                elif sum==2:
-                    time = [start_num, start_num+1, finish_num]
-                elif sum==3:
-                    time = [start_num, start_num+1, start_num+2, finish_num]
-                elif sum==4:
-                    time = [start_num, start_num+1, start_num+2, start_num+3, finish_num]
-                elif sum==5:
-                    time = [start_num, start_num+1, start_num+2, start_num+3, start_num+4, finish_num]
-                for i in time:
-                    try:
-                        obj = TemporaryDB.objects.get(room_number=room_number, time=i)
-                    except TemporaryDB.DoesNotExist:
-                        obj = TemporaryDB(room_number=room_number, time=i, date=date)
-                        obj.save()
-            context['result'] = "正常に登録されました"
-        else:
-            context['result'] = "入力がされていないカラムがあります"
+            if finish=="10:40":
+                    finish_num = 1
+            elif finish=="12:30":
+                finish_num = 2
+            elif finish=="15:00":
+                finish_num = 3
+            elif finish=="16:50":
+                finish_num = 4
+            elif finish=="18:40":
+                finish_num = 5
+            elif finish=="20:30":
+                finish_num = 6
+            sum = finish_num - start_num
+            if sum==0:
+                time = [start_num]
+            elif sum==1:
+                time = [start_num, finish_num]
+            elif sum==2:
+                time = [start_num, start_num+1, finish_num]
+            elif sum==3:
+                time = [start_num, start_num+1, start_num+2, finish_num]
+            elif sum==4:
+                time = [start_num, start_num+1, start_num+2, start_num+3, finish_num]
+            elif sum==5:
+                time = [start_num, start_num+1, start_num+2, start_num+3, start_num+4, finish_num]
+            for i in time:
+                try:
+                    obj = TemporaryDB.objects.get(room_number=room_number, time=i)
+                except TemporaryDB.DoesNotExist:
+                    obj = TemporaryDB(room_number=room_number, time=i, date=date)
+                    obj.save()
+        context['result'] = "正常に登録されました"
         return context
 
 
@@ -181,11 +182,12 @@ class Users_Top_page_View(TemplateView):
         solid_room = SolidDB.objects
         temporary_room = TemporaryDB.objects
         
-        date = self.request.GET.get('selectdate')
+        research_date = self.request.GET.get('selectdate')
         time = self.request.GET.get('time')
-        if date:
-            date = datetime.strptime(date, '%Y-%m-%d')
+        if research_date:
+            date = datetime.strptime(research_date, '%Y-%m-%d')
         else:
+            research_date = datetime.today()
             date = datetime.today()
         day = date.strftime('%A')
         if day == "Sunday":
@@ -254,6 +256,11 @@ class Users_Top_page_View(TemplateView):
                     room2_tf.append("  ×")
                 else:
                     room2_tf.append(" ◯")
+        if time==None:
+            commit = '現在時刻の情報を表示しています'
+        else:
+            date_commit = str(research_date).split('-')
+            commit = date_commit[1] + "月" + date_commit[2] +"日" + str(time) +"限の状況を表示しています。"
         result = super().get_context_data()
         result["room2"] = room2
         result["room2_tf"] = room2_tf
@@ -265,7 +272,7 @@ class Users_Top_page_View(TemplateView):
         result["room5_tf"] = room5_tf
         result["room6"] = room6
         result["room6_tf"] = room6_tf
-            
+        result["commit"] = commit
         return result
 
 admins_solid = Admins_Solid_View.as_view()

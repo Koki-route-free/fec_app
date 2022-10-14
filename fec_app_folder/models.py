@@ -133,7 +133,7 @@ class TemporaryDB(models.Model):
     
     # 投稿1つずつの表紙
     def __str__(self):
-        return self.room_number
+        return self.date
 
 
 class AssetDB(models.Model):
