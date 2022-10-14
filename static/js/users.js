@@ -70,11 +70,6 @@ window.onload = function () {
 
 
 
-// window.setTimeout(function(){
-//   document.getElementById( "submit" ).click();
-// }, 1);あ
-
-
 
 
 
