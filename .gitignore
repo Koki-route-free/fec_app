@@ -1,6 +1,9 @@
 .env
 fec_app_base/__pycache__/
 fec_app_folder/__pycache__/
-fec_app_folder/migrations/
+
+fec_app_folder/migrations/*
+!fec_app_folder/migrations/__init__.py
+
 postgres
 db.sqlite3
