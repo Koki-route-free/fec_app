@@ -95,10 +95,10 @@ class Admins_Temporary_View(TemplateView):
         for i, j, k in zip(room_id, start_time, finish_time):
             if len(i)<1:
                 break;
-            if (i[-4]=="F") or (i[-4]=="H"):
-                room_number = i[-4:]
+            if i[-3]=="2":
+                room_number = "PCroom"
             else:
-                room_number = i[-6:]
+                room_number = i[-4:]
             try:
                 str_date = j.split()[0]
                 date = str_date.replace('/', '-')
