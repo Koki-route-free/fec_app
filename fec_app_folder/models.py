@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.contrib.auth.validators import UnicodeUsernameValidator
-
+from datetime import datetime as dt
 
 
 class CustomUserManager(UserManager):
@@ -133,7 +133,8 @@ class TemporaryDB(models.Model):
     
     # 投稿1つずつの表紙
     def __str__(self):
-        return self.date
+        date = self.date.strftime('%Y/%m/%d')
+        return date
 
 
 class AssetDB(models.Model):

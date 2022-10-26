@@ -121,7 +121,7 @@ class Admins_Temporary_View(TemplateView):
                 start_num = 6
 
             if finish=="10:40":
-                    finish_num = 1
+                finish_num = 1
             elif finish=="12:30":
                 finish_num = 2
             elif finish=="15:00":
@@ -257,10 +257,10 @@ class Users_Top_page_View(TemplateView):
                 else:
                     room2_tf.append(" ◯")
         if time==None:
-            commit = '現在時刻の情報を表示しています'
+            commit = '現在時刻'
         else:
             date_commit = str(research_date).split('-')
-            commit = date_commit[1] + "月" + date_commit[2] +"日" + str(time) +"限の状況を表示しています。"
+            commit = date_commit[1] + "月" + date_commit[2] +"日" + str(time) +"限"
         result = super().get_context_data()
         result["room2"] = room2
         result["room2_tf"] = room2_tf
