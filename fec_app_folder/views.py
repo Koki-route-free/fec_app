@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from .forms import LoginForm, ClassCreateForm, AssetForm
@@ -178,17 +178,17 @@ class Users_Reviews_View(CreateView):
 class Users_Top_page_View(TemplateView):
     template_name = 'users/top_page.html'
     def get_context_data(self, **kwargs):
-        all_room = RoomDB.objects.values_list('room_number', flat=True)
+        all_room = RoomDB.objects.order_by("room_number").values_list('room_number', flat=True)
         solid_room = SolidDB.objects
         temporary_room = TemporaryDB.objects
         
         research_date = self.request.GET.get('selectdate')
         time = self.request.GET.get('time')
         if research_date:
-            date = datetime.strptime(research_date, '%Y-%m-%d')
+            date = datetime.datetime.strptime(research_date, '%Y-%m-%d')
         else:
-            research_date = datetime.today()
-            date = datetime.today()
+            research_date = datetime.datetime.today()
+            date = datetime.datetime.today()
         day = date.strftime('%A')
         if day == "Sunday":
             day_num = 7
@@ -204,7 +204,28 @@ class Users_Top_page_View(TemplateView):
             day_num = 5
         elif day == "Saturday":
             day_num = 6
-        
+        if time:
+            date_commit = str(research_date).split('-')
+            commit = date_commit[1] + "月" + date_commit[2] +"日" + str(time) +"限"
+        else:
+            commit = "現在"
+            t_delta = datetime.timedelta(hours=9)
+            JST = datetime.timezone(t_delta, 'JST')
+            now = datetime.datetime.now(JST)
+            d = int(f'{now:%H%M}')
+            if d < 1040:
+                time = 1
+            elif d < 1230:
+                time = 2
+            elif d < 1500:
+                time = 3
+            elif d < 1650:
+                time = 4
+            elif d < 1840:
+                time = 5
+            else:
+                time = 6
+            
         solid_result = solid_room.filter(Q(day_week__exact=day_num)&Q(time__exact=time))
         temporary_result = temporary_room.filter(Q(date__exact=date)&Q(time__exact=time))
         
@@ -256,11 +277,6 @@ class Users_Top_page_View(TemplateView):
                     room2_tf.append("  ×")
                 else:
                     room2_tf.append(" ◯")
-        if time==None:
-            commit = '現在時刻'
-        else:
-            date_commit = str(research_date).split('-')
-            commit = date_commit[1] + "月" + date_commit[2] +"日" + str(time) +"限"
         result = super().get_context_data()
         result["room2"] = room2
         result["room2_tf"] = room2_tf
