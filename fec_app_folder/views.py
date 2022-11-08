@@ -155,7 +155,7 @@ class Admins_Temporary_View(TemplateView):
                 continue
             for i in time:
                 try:
-                    obj = TemporaryDB.objects.get(room_number=room_number, time=i)
+                    obj = TemporaryDB.objects.get(room_number=room_number, time=i, date=date)
                 except TemporaryDB.DoesNotExist:
                     obj = TemporaryDB(room_number=room_number, time=i, date=date)
                     obj.save()
@@ -258,11 +258,15 @@ class Users_Top_page_View(TemplateView):
                 room6.append(i)
                 if i in use_room:
                     room6_tf.append("  ×")
+                elif day_num in [6,7]:
+                    room6_tf.append("  ×")
                 else:
                     room6_tf.append(" ◯")
             elif "F5" in i:
                 room5.append(i)
                 if i in use_room:
+                    room5_tf.append("  ×")
+                elif day_num in [6,7]:
                     room5_tf.append("  ×")
                 else:
                     room5_tf.append(" ◯")
@@ -270,11 +274,15 @@ class Users_Top_page_View(TemplateView):
                 room4.append(i)
                 if i in use_room:
                     room4_tf.append("  ×")
+                elif day_num in [6,7]:
+                    room4_tf.append("  ×")
                 else:
                     room4_tf.append(" ◯")
             elif ("F3" in i) or ("H" in i):
                 room3.append(i)
                 if i in use_room:
+                    room3_tf.append("  ×")
+                elif day_num in [6,7]:
                     room3_tf.append("  ×")
                 else:
                     room3_tf.append(" ◯")
