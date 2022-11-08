@@ -94,7 +94,10 @@ class Admins_Temporary_View(TemplateView):
         
         for i, j, k in zip(room_id, start_time, finish_time):
             if len(i)<1:
-                break;
+                break
+            if not i[-4] in ["F", "H"]:
+                context['result'] = "⚠︎入力がされていないカラムもしくは誤りがありました"
+                return context
             if i[-3]=="2":
                 room_number = "PCroom"
             else:
@@ -102,37 +105,40 @@ class Admins_Temporary_View(TemplateView):
             try:
                 str_date = j.split()[0]
                 date = str_date.replace('/', '-')
-                start = j.split()[1]
-                finish = k.split()[1]
+                start = int(j.split()[1].replace(':',''))
+                finish = int(k.split()[1].replace(':',''))
             except:
-                context['result'] = "⚠︎入力がされていないカラムがありました"
+                context['result'] = "⚠︎入力がされていないカラムもしくは誤りがありました"
                 return context
-            if start=="9:00":
+            if  start <= 1040:
                 start_num = 1
-            elif start=="10:50":
+            elif start <= 1230:
                 start_num = 2
-            elif start=="13:20":
+            elif start <= 1500:
                 start_num = 3
-            elif start=="15:10":
+            elif start <= 1650:
                 start_num = 4
-            elif start=="17:00":
+            elif start <= 1840:
                 start_num = 5
-            elif start=="18:50":
+            elif start <= 2030:
                 start_num = 6
+            else:
+                start_num = -1
 
-            if finish=="10:40":
+            if finish <= 1040:
                 finish_num = 1
-            elif finish=="12:30":
+            elif finish <= 1230:
                 finish_num = 2
-            elif finish=="15:00":
+            elif finish <= 1500:
                 finish_num = 3
-            elif finish=="16:50":
+            elif finish <= 1650:
                 finish_num = 4
-            elif finish=="18:40":
+            elif finish <= 1840:
                 finish_num = 5
-            elif finish=="20:30":
+            else:
                 finish_num = 6
             sum = finish_num - start_num
+
             if sum==0:
                 time = [start_num]
             elif sum==1:
@@ -145,6 +151,8 @@ class Admins_Temporary_View(TemplateView):
                 time = [start_num, start_num+1, start_num+2, start_num+3, finish_num]
             elif sum==5:
                 time = [start_num, start_num+1, start_num+2, start_num+3, start_num+4, finish_num]
+            else:
+                continue
             for i in time:
                 try:
                     obj = TemporaryDB.objects.get(room_number=room_number, time=i)
@@ -153,7 +161,6 @@ class Admins_Temporary_View(TemplateView):
                     obj.save()
         context['result'] = "正常に登録されました"
         return context
-
 
 
 class Admins_Add_classroom_View(CreateView):
