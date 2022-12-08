@@ -1,15 +1,15 @@
 Python（django）
 
-### 本番環境
+#### 本番環境
 psql (PostgreSQL)
-### 開発環境
-sqlite3
+#### 開発環境
+sqlite
 
 nginx version: nginx/1.18.0 (Ubuntu)
 
 
 
-## 共同開発社は以下を見てください
+## 共同開発者は以下を見てください
 #### 始め方を実行してからmakemigrations以下を順に一回実行してください
 #### そのあとは止め方と再開のみしか利用しない想定です。
 ### cssは可能か限りこれで書く
@@ -28,12 +28,12 @@ docker comopse start
 docker compose down -v
 
 
-### makemigrations:
+### makemigrations
   docker compose run --rm web python manage.py makemigrations fec_app_folder
 
-### migrate:
+### migrate
   docker compose run --rm web python manage.py migrate
-### createsuperuser:
+### createsuperuser
   docker compose run --rm web python manage.py createsuperuser
 
 
