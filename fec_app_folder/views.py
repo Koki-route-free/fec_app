@@ -22,16 +22,16 @@ class Admins_Solid_View(TemplateView):
 
         date = self.request.GET.get('date')
         if date:
-            comment_1 = self.request.GET.getlist('comment_'+date+"1")
-            comment_2 = self.request.GET.getlist('comment_'+date+"2")
-            comment_3 = self.request.GET.getlist('comment_'+date+"3")
-            comment_4 = self.request.GET.getlist('comment_'+date+"4")
-            comment_5 = self.request.GET.getlist('comment_'+date+"5")
-            comment_6 = self.request.GET.getlist('comment_'+date+"6")
-            comment_num = [comment_1, comment_2, comment_3, comment_4, comment_5, comment_6]
-            for i, comment in enumerate(comment_num):
+            c_1 = self.request.GET.getlist('c_'+date+"1")
+            c_2 = self.request.GET.getlist('c_'+date+"2")
+            c_3 = self.request.GET.getlist('c_'+date+"3")
+            c_4 = self.request.GET.getlist('c_'+date+"4")
+            c_5 = self.request.GET.getlist('c_'+date+"5")
+            c_6 = self.request.GET.getlist('c_'+date+"6")
+            c_num = [c_1, c_2, c_3, c_4, c_5, c_6]
+            for i, c in enumerate(c_num):
                 time = i + 1
-                for c, r in zip(comment, room_number):
+                for c, r in zip(c, room_number):
                     try:
                         obj = SolidDB.objects.get(day_week=int(date), time=time, room_number=r)
                     except SolidDB.DoesNotExist:
@@ -48,36 +48,36 @@ class Admins_Solid_View(TemplateView):
                             obj.delete()
         for i in range(1,7):
             for j in range(1,7):
-                comment_number = "comment_" + str(i) + str(j)
-                class_comment_list = []
+                c_number = "c_" + str(i) + str(j)
+                class_c_list = []
                 for r in room_number:
                     if r in solid_room_number:
                         nums = [k for k, x in enumerate(solid_room_number) if x == r]
                         tf = []
                         for num in nums:
                             if solid_day_week[num]==i and solid_time[num]==j:
-                                class_comment_list.append({comment_number:solid_comment[num]})
+                                class_c_list.append({c_number:solid_comment[num]})
                                 tf.append(1)
                             else:
                                 tf.append(0)
                         if not 1 in tf:
-                            class_comment_list.append({comment_number:""})
+                            class_c_list.append({c_number:""})
                     else:
-                        class_comment_list.append({comment_number:""})
+                        class_c_list.append({c_number:""})
                 if j==1:
-                    comment_list = class_comment_list
+                    c_list = class_c_list
                 else:
-                    for k, l in enumerate(class_comment_list):
-                        comment_list[k].update(l)
+                    for k, l in enumerate(class_c_list):
+                        c_list[k].update(l)
             if i==1:
-                comment_lists = comment_list
+                c_lists = c_list
             else:
-                for k, l in enumerate(comment_list):
-                    comment_lists[k].update(l)
+                for k, l in enumerate(c_list):
+                    c_lists[k].update(l)
         for k, (l, m) in enumerate(zip(room_number, capacity)):
             a = {"room_number":l, "capacity":m}
-            comment_lists[k].update(a)
-        context["comment_lists"] = comment_lists
+            c_lists[k].update(a)
+        context["c_lists"] = c_lists
         context["result"] = "正常に登録されました"
         return context
 
