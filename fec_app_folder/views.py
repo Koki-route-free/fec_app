@@ -29,9 +29,9 @@ class Admins_Solid_View(TemplateView):
             c_5 = self.request.GET.getlist('c_'+date+"5")
             c_6 = self.request.GET.getlist('c_'+date+"6")
             c_num = [c_1, c_2, c_3, c_4, c_5, c_6]
-            for i, c in enumerate(c_num):
+            for i, comment in enumerate(c_num):
                 time = i + 1
-                for c, r in zip(c, room_number):
+                for c, r in zip(comment, room_number):
                     try:
                         obj = SolidDB.objects.get(day_week=int(date), time=time, room_number=r)
                     except SolidDB.DoesNotExist:
